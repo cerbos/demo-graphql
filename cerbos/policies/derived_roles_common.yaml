@@ -5,9 +5,21 @@ description: |-
 derived_roles:
   name: common_roles
   definitions:
-  - name: approver
-    parentRoles: ["user"]
+  - name: OWNER
+    parentRoles: ["USER"]
     computation:
       match:
         expr:
-          - request.resource.attr.owner == request.principal.id
+          - request.resource.attr.ownerId == request.principal.id
+  - name: FINANCE
+    parentRoles: ["USER"]
+    computation:
+      match:
+        expr:
+          - request.principal.attr.department == "FINANCE"
+  - name: REGION_MANAGER
+    parentRoles: ["USER"]
+    computation:
+      match:
+        expr:
+          - request.resource.attr.region == request.principal.attr.region

@@ -4,7 +4,7 @@ import { Region } from "../data/regions.data";
 @ObjectType()
 export default class Company {
   @Field()
-  id: number;
+  id: string;
 
   @Field()
   name: string;

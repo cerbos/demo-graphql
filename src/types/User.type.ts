@@ -6,7 +6,7 @@ import { UserRole } from "../data/users.data";
 @ObjectType()
 export default class User {
   @Field()
-  id: number;
+  id: string;
 
   @Field()
   name: string;

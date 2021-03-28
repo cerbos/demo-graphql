@@ -13,27 +13,27 @@ export enum InvoiceStatus {
 
 export const Invoices: Invoice[] = [
   {
-    id: 1,
+    id: "invoice1",
     createdAt: new Date('2021-10-01'),
-    createdBy: userById(3),
-    invoiceTo: companyById(2),
+    createdBy: userById("user3"),
+    invoiceTo: companyById("company2"),
     region: Region.EMEA,
     amount: 2421.12,
     status: InvoiceStatus.OPEN,
   },
   {
-    id: 2,
+    id: "invoice2",
     createdAt: new Date('2021-10-01'),
-    createdBy: userById(3),
-    invoiceTo: companyById(3),
+    createdBy: userById("user3"),
+    invoiceTo: companyById("company3"),
     region: Region.EMEA,
     amount: 513.50,
     status: InvoiceStatus.APPROVED,
-    approvedBy: userById(2)
+    approvedBy: userById("user2")
   }
 ];
 
 
-export const invoiceById = (id: number): Invoice => {
+export const invoiceById = (id: string): Invoice => {
   return Invoices.find(c => c.id === id);
 }

@@ -7,7 +7,7 @@ import User from "./User.type";
 @ObjectType()
 export default class Invoice {
   @Field()
-  id: number;
+  id: string;
 
   @Field()
   createdAt: Date;

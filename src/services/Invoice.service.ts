@@ -16,7 +16,7 @@ export class InvoiceService {
   }
 
 
-  async get(id: number): Promise<Invoice> {
+  async get(id: string): Promise<Invoice> {
     return invoiceById(id);
   }
 

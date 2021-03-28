@@ -16,6 +16,19 @@ To boot the GraphQL server run `npm run start`
 
 Once running, you can access GraphQL Playground [http://localhost:5000/graphql](http://localhost:5000/graphql)
 
+## Policies
+
+- IT can do everything
+- Users can create invoices
+- Users can view their invoices
+- Users can update their own un-approved invoices
+- Users can delete their own un-approved invoices
+- Managers view all invoices in their region
+- Managers update un-approved invoices in their region
+- Managers delete un-approved invoices in their region
+- Finance can view all invoices
+- Finance can approve all invoices
+
 ## Sample Queries
 
 Coming soon....

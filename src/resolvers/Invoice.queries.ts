@@ -1,4 +1,4 @@
-import { Arg, Ctx, Query, Resolver } from "type-graphql";
+import { Arg, Ctx, Mutation, Query, Resolver } from "type-graphql";
 import { Inject, Service } from "typedi";
 import { IContext } from "../server/context.interface";
 import { CerbosService } from "../services/Cerbos.service";
@@ -27,24 +27,41 @@ class InvoiceQueries {
   }
 
   @Query(returns => Invoice)
-  async invoice(@Arg('id') id: number, @Ctx() context: IContext): Promise<Invoice> {
+  async invoice(@Arg('id') id: string, @Ctx() context: IContext): Promise<Invoice> {
     const invoice = await this.invoiceService.get(id);
     await this.cerbos.authoize({
-      action: "invoice:get",
+      action: "view",
       resource: {
         name: "invoice:object",
         attr: {
-          id: id + "",
+          id,
           region: invoice.region.toString(),
           status: invoice.status.toString(),
+          ownerId: invoice.createdBy.id
         }
       },
-      principal: {
-        id: context.user.id + "",
-        roles: [context.user.role.toString()]
-      }
+      principal: context.user
     })
     return invoice;
+  }
+
+  @Mutation(returns => Boolean)
+  async approveInvoice(@Arg('id') id: string, @Ctx() context: IContext): Promise<boolean> {
+    const invoice = await this.invoiceService.get(id);
+    await this.cerbos.authoize({
+      action: "approve",
+      resource: {
+        name: "invoice:object",
+        attr: {
+          id,
+          region: invoice.region.toString(),
+          status: invoice.status.toString(),
+          ownerId: invoice.createdBy.id
+        }
+      },
+      principal: context.user
+    })
+    return true;
   }
 
 }

@@ -4,22 +4,22 @@ import { Region } from "./regions.data";
 
 export const Companies: Company[] = [
   {
-    id: 1,
+    id: "company1",
     name: "Candor Corp",
     region: Region.EMEA,
   },
   {
-    id: 2,
+    id: "company2",
     name: "Flux Water Gear",
     region: Region.NA,
   },
   {
-    id: 3,
+    id: "company3",
     name: "Vortex Solar",
     region: Region.NA,
   }
 ];
 
-export const companyById = (id: number): Company => {
+export const companyById = (id: string): Company => {
   return Companies.find(c => c.id === id);
 }

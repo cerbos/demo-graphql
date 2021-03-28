@@ -8,5 +8,30 @@ resourcePolicy:
   rules:
     - action: '*'
       effect: EFFECT_ALLOW
+      roles:
+        - ADMIN
+    - action: 'view'
+      effect: EFFECT_ALLOW
       derivedRoles:
-        - approver
+        - OWNER
+        - FINANCE
+        - REGION_MANAGER
+    - action: 'update'
+      effect: EFFECT_ALLOW
+      derivedRoles:
+        - OWNER
+        - FINANCE
+        - REGION_MANAGER
+      condition:
+        match:
+          expr:
+            - request.resource.attr.region == request.principal.attr.region        
+    - action: 'delete'
+      effect: EFFECT_ALLOW
+      derivedRoles:
+        - OWNER
+        - FINANCE
+    - action: 'approve'
+      effect: EFFECT_ALLOW
+      derivedRoles:
+        - FINANCE

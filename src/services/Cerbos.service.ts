@@ -3,6 +3,7 @@ import axios from "axios";
 import { config } from "node-config-ts";
 import { Service } from "typedi";
 import { v4 as uuidv4 } from 'uuid';
+import User from "../types/User.type";
 import logger from "../utils/logger";
 
 const log = logger('CerbosService');
@@ -14,11 +15,7 @@ interface IAuthoize {
     name: string,
     attr: any
   },
-  principal: {
-    id: any,
-    version?: any,
-    roles: string[],
-  }
+  principal: User
 }
 
 class AuthorizationError extends ApolloError {
@@ -35,7 +32,7 @@ export class CerbosService {
   }
 
   async authoize(data: IAuthoize): Promise<boolean> {
-    log.info(`authorize action: ${data.action} princpalId: ${data.principal.id}`)
+    log.info(`authorize action: ${data.action} principalId: ${data.principal.id}`)
     const payload = {
       requestId: uuidv4(),
       ...data,
@@ -45,7 +42,12 @@ export class CerbosService {
       },
       principal: {
         version: "default",
-        ...data.principal,
+        id: data.principal.id,
+        roles: [data.principal.role.toString()],
+        attr: {
+          department: data.principal.department.toString(),
+          region: data.principal.region?.toString()
+        }
       }
     };
     log.info(JSON.stringify(payload, null, 2));
@@ -54,7 +56,6 @@ export class CerbosService {
       log.info("authorization: allow")
       return true
     } catch (e) {
-      log.error(e)
       throw new AuthorizationError("Access denied");
     }
   }

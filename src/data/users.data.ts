@@ -10,31 +10,55 @@ export enum UserRole {
 
 export const Users: User[] = [
   {
-    id: 1,
-    name: "Emre Admin",
+    id: "user1",
+    name: "Sajit P",
     role: UserRole.ADMIN,
     department: Departments.IT,
-    token: "key:emre:it",
+    token: "key:sajit:it",
   },
   {
-    id: 2,
-    name: "Joe Finance",
+    id: "user2",
+    name: "Joe Clark",
     role: UserRole.USER,
     department: Departments.FINANCE,
     token: "key:joe:finance",
     region: Region.EMEA,
   },
   {
-    id: 3,
+    id: "user3",
     name: "Sally Sales",
     role: UserRole.USER,
     department: Departments.SALES,
     token: "key:sally:sales",
     region: Region.EMEA,
-  }
+  },
+  {
+    id: "user4",
+    name: "Brock Jackman",
+    role: UserRole.USER,
+    department: Departments.SALES,
+    token: "key:brock:manager-na",
+    region: Region.NA,
+  },
+  {
+    id: "user5",
+    name: "John Smith",
+    role: UserRole.USER,
+    department: Departments.SALES,
+    token: "key:john:manager-emea",
+    region: Region.EMEA,
+  },
+  {
+    id: "user6",
+    name: "Zeena",
+    role: UserRole.USER,
+    department: Departments.SALES,
+    token: "key:zeena:sales",
+    region: Region.NA,
+  },
 ]
 
 
-export const userById = (id: number): User => {
+export const userById = (id: string): User => {
   return Users.find(c => c.id === id);
 }
