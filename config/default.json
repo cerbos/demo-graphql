@@ -1,0 +1,12 @@
+{
+  "port": 5000,
+  "log": "all",
+  "graphql": {
+    "playground": true,
+    "tracing": true,
+    "introspection": true
+  },
+  "cerbos": {
+    "host": "http://localhost:9999"
+  }
+}

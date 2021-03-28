@@ -1,0 +1,13 @@
+---
+apiVersion: cerbos.dev/v1
+description: |-
+  Common dynamic roles used within the Finance Demo app
+derived_roles:
+  name: common_roles
+  definitions:
+  - name: approver
+    parentRoles: ["user"]
+    computation:
+      match:
+        expr:
+          - request.resource.attr.owner == request.principal.id

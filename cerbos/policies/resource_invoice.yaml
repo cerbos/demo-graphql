@@ -1,0 +1,12 @@
+---
+apiVersion: cerbos.dev/v1
+resourcePolicy:
+  version: "default"
+  importDerivedRoles:
+    - common_roles
+  resource: "invoice:object"
+  rules:
+    - action: '*'
+      effect: EFFECT_ALLOW
+      derivedRoles:
+        - approver
