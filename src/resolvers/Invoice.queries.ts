@@ -28,7 +28,9 @@ class InvoiceQueries {
 
   @Query(returns => Invoice)
   async invoice(@Arg('id') id: string, @Ctx() context: IContext): Promise<Invoice> {
+    // Get the invoice by ID
     const invoice = await this.invoiceService.get(id);
+    // This will authorize the user against cerbos or else through an authorization error
     await this.cerbos.authoize({
       action: "view",
       resource: {
@@ -42,12 +44,15 @@ class InvoiceQueries {
       },
       principal: context.user
     })
+    // Return the invoice
     return invoice;
   }
 
   @Mutation(returns => Boolean)
   async approveInvoice(@Arg('id') id: string, @Ctx() context: IContext): Promise<boolean> {
+    // Get the invoice by ID
     const invoice = await this.invoiceService.get(id);
+    // This will authorize the user against cerbos or else through an authorization error
     await this.cerbos.authoize({
       action: "approve",
       resource: {
@@ -61,6 +66,7 @@ class InvoiceQueries {
       },
       principal: context.user
     })
+    // Do the actual approval call here....pretend it worked for now
     return true;
   }
 
