@@ -4,7 +4,8 @@ import { Region } from "./regions.data";
 
 export enum UserRole {
   ADMIN = "ADMIN",
-  USER = "USER"
+  USER = "USER",
+  MANAGER = "MANAGER"
 }
 
 
@@ -35,7 +36,7 @@ export const Users: User[] = [
   {
     id: "user4",
     name: "Brock Jackman",
-    role: UserRole.USER,
+    role: UserRole.MANAGER,
     department: Departments.SALES,
     token: "key:brock:manager-na",
     region: Region.NA,
@@ -43,7 +44,7 @@ export const Users: User[] = [
   {
     id: "user5",
     name: "John Smith",
-    role: UserRole.USER,
+    role: UserRole.MANAGER,
     department: Departments.SALES,
     token: "key:john:manager-emea",
     region: Region.EMEA,

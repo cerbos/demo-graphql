@@ -18,7 +18,7 @@ derived_roles:
         expr:
           - request.principal.attr.department == "FINANCE"
   - name: REGION_MANAGER
-    parentRoles: ["USER"]
+    parentRoles: ["MANAGER"]
     computation:
       match:
         expr:
