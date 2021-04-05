@@ -1,6 +1,6 @@
 ---
 server:
-  listenAddr: ":9999"
+  httpListenAddr: ":9999"
 
 storage:
   driver: "disk" # Valid values are "disk" or "git"

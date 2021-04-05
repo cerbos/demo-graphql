@@ -6,17 +6,17 @@ resourcePolicy:
     - common_roles
   resource: "invoice:object"
   rules:
-    - action: '*'
+    - actions: ['*']
       effect: EFFECT_ALLOW
       roles:
         - ADMIN
-    - action: 'view'
+    - actions: ['view']
       effect: EFFECT_ALLOW
       derivedRoles:
         - OWNER
         - FINANCE
         - REGION_MANAGER
-    - action: 'approve'
+    - actions: ['approve']
       effect: EFFECT_ALLOW
       derivedRoles:
         - FINANCE
