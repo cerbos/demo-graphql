@@ -1,5 +1,5 @@
 import { ApolloError, AuthenticationError } from "apollo-server-errors";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { config } from "node-config-ts";
 import { Service } from "typedi";
 import { v4 as uuidv4 } from 'uuid';
@@ -16,6 +16,18 @@ interface IAuthoize {
     attr: any
   },
   principal: User
+}
+
+enum AuthoizeEffect {
+    ALLOW = "EFFECT_ALLOW",
+    DENY = "EFFECT_DENY",
+}
+
+interface IAuthoizeResponse {
+    requestID: string,
+    statusCode: number,
+    statusMessage: string,
+    effect: AuthoizeEffect,
 }
 
 class AuthorizationError extends ApolloError {
@@ -51,13 +63,18 @@ export class CerbosService {
       }
     };
     log.info(JSON.stringify(payload, null, 2));
+
     try {
-      const request = await axios.post(`${config.cerbos.host}/v1/check`, payload)
-      log.info("authorization: allow")
-      return true
+      const allowed = await axios
+        .post<IAuthoizeResponse>(`${config.cerbos.host}/v1/check`, payload)
+        .then((response: AxiosResponse<IAuthoizeResponse>) => {
+          log.info(response.data);
+          return response.data.effect == AuthoizeEffect.ALLOW;
+        });
+
+      return allowed;
     } catch (e) {
       throw new AuthorizationError("Access denied");
     }
   }
-
 }
