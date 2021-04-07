@@ -1,39 +1,39 @@
 
-import Invoice from "../types/Invoice.type";
+import Expense from "../types/Expense";
 import { companyById } from "./companies.data";
 import { Region } from "./regions.data";
 import { userById } from "./users.data";
 
-export enum InvoiceStatus {
+export enum ExpenseStatus {
   OPEN = "OPEN",
   APPROVED = "APPROVED",
   REJECTED = "REJECTED"
 }
 
 
-export const Invoices: Invoice[] = [
+export const Expenses: Expense[] = [
   {
-    id: "invoice1",
+    id: "expense1",
     createdAt: new Date('2021-10-01'),
     createdBy: userById("user3"),
-    invoiceTo: companyById("company2"),
+    vendor: companyById("company2"),
     region: Region.EMEA,
     amount: 2421.12,
-    status: InvoiceStatus.OPEN,
+    status: ExpenseStatus.OPEN,
   },
   {
-    id: "invoice2",
+    id: "expense2",
     createdAt: new Date('2021-10-01'),
     createdBy: userById("user3"),
-    invoiceTo: companyById("company3"),
+    vendor: companyById("company3"),
     region: Region.EMEA,
     amount: 513.50,
-    status: InvoiceStatus.APPROVED,
+    status: ExpenseStatus.APPROVED,
     approvedBy: userById("user2")
   }
 ];
 
 
-export const invoiceById = (id: string): Invoice => {
-  return Invoices.find(c => c.id === id);
+export const expenseById = (id: string): Expense => {
+  return Expenses.find(c => c.id === id);
 }

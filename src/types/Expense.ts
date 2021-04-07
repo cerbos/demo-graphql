@@ -1,11 +1,12 @@
 import { Field, ObjectType } from "type-graphql";
-import { InvoiceStatus } from "../data/invoices.data";
+import { ExpenseStatus } from "../data/expenses.data";
+
 import { Region } from "../data/regions.data";
 import Company from "./Company.type";
 import User from "./User.type";
 
 @ObjectType()
-export default class Invoice {
+export default class Expense {
   @Field()
   id: string;
 
@@ -19,10 +20,10 @@ export default class Invoice {
   amount: number;
 
   @Field()
-  status: InvoiceStatus;
+  status: ExpenseStatus;
 
   @Field(() => Company)
-  invoiceTo: Company
+  vendor: Company
 
   @Field()
   region: Region;

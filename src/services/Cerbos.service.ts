@@ -19,15 +19,15 @@ interface IAuthoize {
 }
 
 enum AuthoizeEffect {
-    ALLOW = "EFFECT_ALLOW",
-    DENY = "EFFECT_DENY",
+  ALLOW = "EFFECT_ALLOW",
+  DENY = "EFFECT_DENY",
 }
 
 interface IAuthoizeResponse {
-    requestID: string,
-    statusCode: number,
-    statusMessage: string,
-    effect: AuthoizeEffect,
+  requestID: string,
+  statusCode: number,
+  statusMessage: string,
+  effect: AuthoizeEffect,
 }
 
 class AuthorizationError extends ApolloError {
@@ -68,7 +68,7 @@ export class CerbosService {
       const allowed = await axios
         .post<IAuthoizeResponse>(`${config.cerbos.host}/v1/check`, payload)
         .then((response: AxiosResponse<IAuthoizeResponse>) => {
-          log.info(response.data);
+          log.info(JSON.stringify(response.data, null, 2));
           return response.data.effect == AuthoizeEffect.ALLOW;
         });
 

@@ -4,7 +4,7 @@ resourcePolicy:
   version: "default"
   importDerivedRoles:
     - common_roles
-  resource: "invoice:object"
+  resource: "expense:object"
   rules:
     - actions: ['*']
       effect: EFFECT_ALLOW
@@ -16,7 +16,12 @@ resourcePolicy:
         - OWNER
         - FINANCE
         - REGION_MANAGER
-    - actions: ['approve']
+    - actions: ['view:approver']
+      effect: EFFECT_ALLOW
+      derivedRoles:
+        - OWNER
+        - FINANCE
+    - actions: ['approve',]
       effect: EFFECT_ALLOW
       derivedRoles:
         - FINANCE
