@@ -1,7 +1,6 @@
 import Company from "../types/Company.type";
 import { Region } from "./regions.data";
 
-
 export const Companies: Company[] = [
   {
     id: "company1",
@@ -17,9 +16,9 @@ export const Companies: Company[] = [
     id: "company3",
     name: "Vortex Solar",
     region: Region.NA,
-  }
+  },
 ];
 
 export const companyById = (id: string): Company => {
-  return Companies.find(c => c.id === id);
-}
+  return Companies.find((c) => c.id === id);
+};

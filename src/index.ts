@@ -6,7 +6,6 @@ import createContext from "./server/create-context";
 import { createGQLServer } from "./server/graphql-server";
 import logger from "./utils/logger";
 
-
 //ENABLE GLOBAL
 const startTime = new Date();
 const log = logger("megallan");
@@ -14,27 +13,27 @@ log.info(`start ENV: ${process.env.NODE_ENV}`);
 const port = config.port || 5000;
 
 async function init() {
-  const createContextFn = (request: ExpressContext) => createContext(request)
-  const gqlServer = await createGQLServer(createContextFn)
+  const createContextFn = (request: ExpressContext) => createContext(request);
+  const gqlServer = await createGQLServer(createContextFn);
   const app = express();
 
-  app.get('/', (req, res) => {
-    res.send("demo-server")
-  })
+  app.get("/", (req, res) => {
+    res.send("demo-server");
+  });
 
-  app.get('/status', async (_, res) => {
+  app.get("/status", async (_, res) => {
     const meta = {
       port: port,
       env: process.env.NODE_ENV,
       startedAt: startTime,
       node: process.env.NODE_NAME,
       pod: process.env.POD_NAME,
-    }
+    };
     res.json(meta);
-  })
+  });
 
   //Apply the GQL Server
-  gqlServer.applyMiddleware({ app, path: '/graphql' });
+  gqlServer.applyMiddleware({ app, path: "/graphql" });
 
   // Start the server
   app.listen(port, () => log.info(`Listening on port ${port}`));
@@ -44,4 +43,4 @@ async function init() {
   PORT: ${port}`);
 }
 
-init().catch(console.error)
+init().catch(console.error);

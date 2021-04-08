@@ -2,20 +2,20 @@ import { ApolloError, AuthenticationError } from "apollo-server-errors";
 import axios, { AxiosResponse } from "axios";
 import { config } from "node-config-ts";
 import { Service } from "typedi";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 import User from "../types/User.type";
 import logger from "../utils/logger";
 
-const log = logger('CerbosService');
+const log = logger("CerbosService");
 
 interface IAuthoize {
-  action: string,
+  action: string;
   resource: {
-    version?: any,
-    name: string,
-    attr: any
-  },
-  principal: User
+    version?: any;
+    name: string;
+    attr: any;
+  };
+  principal: User;
 }
 
 enum AuthoizeEffect {
@@ -24,27 +24,27 @@ enum AuthoizeEffect {
 }
 
 interface IAuthoizeResponse {
-  requestID: string,
-  statusCode: number,
-  statusMessage: string,
-  effect: AuthoizeEffect,
+  requestID: string;
+  statusCode: number;
+  statusMessage: string;
+  effect: AuthoizeEffect;
 }
 
-class AuthorizationError extends ApolloError {
+export class AuthorizationError extends ApolloError {
   constructor(message: string) {
-    super(message, 'AUTHORIZATION_ERROR');
-    Object.defineProperty(this, 'name', { value: 'AuthorizationError' });
+    super(message, "AUTHORIZATION_ERROR");
+    Object.defineProperty(this, "name", { value: "AuthorizationError" });
   }
 }
-
 
 @Service({ global: true })
 export class CerbosService {
-  constructor() {
-  }
+  constructor() {}
 
   async authoize(data: IAuthoize): Promise<boolean> {
-    log.info(`authorize action: ${data.action} principalId: ${data.principal.id}`)
+    log.info(
+      `authorize action: ${data.action} principalId: ${data.principal.id}`
+    );
     const payload = {
       requestId: uuidv4(),
       ...data,
@@ -58,23 +58,19 @@ export class CerbosService {
         roles: [data.principal.role.toString()],
         attr: {
           department: data.principal.department.toString(),
-          region: data.principal.region?.toString()
-        }
-      }
+          region: data.principal.region?.toString(),
+        },
+      },
     };
-    log.info(JSON.stringify(payload, null, 2));
 
     try {
-      const allowed = await axios
-        .post<IAuthoizeResponse>(`${config.cerbos.host}/v1/check`, payload)
-        .then((response: AxiosResponse<IAuthoizeResponse>) => {
-          log.info(JSON.stringify(response.data, null, 2));
-          return response.data.effect == AuthoizeEffect.ALLOW;
-        });
-
-      return allowed;
+      const response = await axios.post<IAuthoizeResponse>(
+        `${config.cerbos.host}/v1/check`,
+        payload
+      );
+      return response.data.effect == AuthoizeEffect.ALLOW;
     } catch (e) {
-      throw new AuthorizationError("Access denied");
+      throw new AuthorizationError("Error authorizing");
     }
   }
 }

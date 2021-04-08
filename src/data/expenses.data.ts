@@ -1,5 +1,4 @@
-
-import Expense from "../types/Expense";
+import Expense from "../types/Expense.type";
 import { companyById } from "./companies.data";
 import { Region } from "./regions.data";
 import { userById } from "./users.data";
@@ -7,14 +6,13 @@ import { userById } from "./users.data";
 export enum ExpenseStatus {
   OPEN = "OPEN",
   APPROVED = "APPROVED",
-  REJECTED = "REJECTED"
+  REJECTED = "REJECTED",
 }
-
 
 export const Expenses: Expense[] = [
   {
     id: "expense1",
-    createdAt: new Date('2021-10-01'),
+    createdAt: new Date("2021-10-01"),
     createdBy: userById("user3"),
     vendor: companyById("company2"),
     region: Region.EMEA,
@@ -23,17 +21,16 @@ export const Expenses: Expense[] = [
   },
   {
     id: "expense2",
-    createdAt: new Date('2021-10-01'),
+    createdAt: new Date("2021-10-01"),
     createdBy: userById("user3"),
     vendor: companyById("company3"),
     region: Region.EMEA,
-    amount: 513.50,
+    amount: 513.5,
     status: ExpenseStatus.APPROVED,
-    approvedBy: userById("user2")
-  }
+    approvedBy: userById("user2"),
+  },
 ];
 
-
 export const expenseById = (id: string): Expense => {
-  return Expenses.find(c => c.id === id);
-}
+  return Expenses.find((c) => c.id === id);
+};

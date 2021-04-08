@@ -2,7 +2,7 @@ import { AuthChecker } from "type-graphql";
 
 import logger from "../utils/logger";
 import { IContext } from "./context.interface";
-const log = logger('authChecker');
+const log = logger("authChecker");
 
 // create auth checker function
 export const authChecker: AuthChecker<IContext> = (context, roles) => {

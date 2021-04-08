@@ -1,4 +1,3 @@
-
 import { ApolloServer } from "apollo-server-express";
 import { config } from "node-config-ts";
 import { buildSchema, registerEnumType, ResolverData } from "type-graphql";
@@ -10,8 +9,7 @@ import logger from "../utils/logger";
 import { authChecker } from "./auth-checker";
 import { IContext } from "./context.interface";
 
-
-const log = logger('ApolloServer');
+const log = logger("ApolloServer");
 
 const registerEnums = () => {
   registerEnumType(UserRole, {
@@ -23,19 +21,22 @@ const registerEnums = () => {
     name: "Departments", // this one is mandatory
     description: "Business departments", // this one is optional
   });
-}
+};
 
-export async function createGQLServer(createContextFn: Function): Promise<ApolloServer> {
-  log.info('GraphQL schema building');
+export async function createGQLServer(
+  createContextFn: Function
+): Promise<ApolloServer> {
+  log.info("GraphQL schema building");
   try {
-    registerEnums()
+    registerEnums();
     const schema = await buildSchema({
       resolvers: [__dirname + "/../**/resolvers/*.{ts,js}"],
-      container: (({ context }: ResolverData<IContext>) => Container.of(context.requestId)),
+      container: ({ context }: ResolverData<IContext>) =>
+        Container.of(context.requestId),
       authChecker: authChecker,
     });
 
-    log.info('GraphQL schema built');
+    log.info("GraphQL schema built");
 
     const server = new ApolloServer({
       schema,
@@ -55,10 +56,10 @@ export async function createGQLServer(createContextFn: Function): Promise<Apollo
         },
       ],
     });
-    log.info('GraphQL server created');
-    return server
+    log.info("GraphQL server created");
+    return server;
   } catch (e) {
-    log.error('GraphQL server failed');
-    console.error(e)
+    log.error("GraphQL server failed");
+    console.error(e);
   }
 }

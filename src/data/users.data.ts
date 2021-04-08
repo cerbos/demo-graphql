@@ -5,9 +5,8 @@ import { Region } from "./regions.data";
 export enum UserRole {
   ADMIN = "ADMIN",
   USER = "USER",
-  MANAGER = "MANAGER"
+  MANAGER = "MANAGER",
 }
-
 
 export const Users: User[] = [
   {
@@ -57,9 +56,8 @@ export const Users: User[] = [
     token: "key:zeena:sales",
     region: Region.NA,
   },
-]
-
+];
 
 export const userById = (id: string): User => {
-  return Users.find(c => c.id === id);
-}
+  return Users.find((c) => c.id === id);
+};
