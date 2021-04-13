@@ -65,7 +65,7 @@ export class CerbosService {
 
     try {
       const response = await axios.post<IAuthoizeResponse>(
-        `${config.cerbos.host}/v1/check`,
+        `${config.cerbos.host}/api/check`,
         payload
       );
       return response.data.effect == AuthoizeEffect.ALLOW;

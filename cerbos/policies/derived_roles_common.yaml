@@ -1,5 +1,5 @@
 ---
-apiVersion: cerbos.dev/v1
+apiVersion: api.cerbos.dev/v1
 description: |-
   Common dynamic roles used within the Finance Demo app
 derived_roles:
@@ -7,19 +7,16 @@ derived_roles:
   definitions:
   - name: OWNER
     parentRoles: ["USER"]
-    computation:
+    condition:
       match:
-        expr:
-          - request.resource.attr.ownerId == request.principal.id
+        expr: request.resource.attr.ownerId == request.principal.id
   - name: FINANCE
     parentRoles: ["USER"]
-    computation:
+    condition:
       match:
-        expr:
-          - request.principal.attr.department == "FINANCE"
+        expr: request.principal.attr.department == "FINANCE"
   - name: REGION_MANAGER
     parentRoles: ["MANAGER"]
-    computation:
+    condition:
       match:
-        expr:
-          - request.resource.attr.region == request.principal.attr.region
+        expr: request.resource.attr.region == request.principal.attr.region
