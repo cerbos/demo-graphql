@@ -11,7 +11,7 @@ const log = logger("CerbosService");
 interface IAuthoize {
   action: string;
   resource: {
-    version?: any;
+    policyVersion?: any;
     name: string;
     attr: any;
   };
@@ -49,11 +49,11 @@ export class CerbosService {
       requestId: uuidv4(),
       ...data,
       resource: {
-        version: "default",
+        policyVersion: "default",
         ...data.resource,
       },
       principal: {
-        version: "default",
+        policyVersion: "default",
         id: data.principal.id,
         roles: [data.principal.role.toString()],
         attr: {
@@ -65,7 +65,7 @@ export class CerbosService {
 
     try {
       const response = await axios.post<IAuthoizeResponse>(
-        `${config.cerbos.host}/v1/check`,
+        `${config.cerbos.host}/api/check`,
         payload
       );
       return response.data.effect == AuthoizeEffect.ALLOW;
