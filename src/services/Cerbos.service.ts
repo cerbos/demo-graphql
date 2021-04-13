@@ -11,7 +11,7 @@ const log = logger("CerbosService");
 interface IAuthoize {
   action: string;
   resource: {
-    version?: any;
+    policyVersion?: any;
     name: string;
     attr: any;
   };
@@ -49,11 +49,11 @@ export class CerbosService {
       requestId: uuidv4(),
       ...data,
       resource: {
-        version: "default",
+        policyVersion: "default",
         ...data.resource,
       },
       principal: {
-        version: "default",
+        policyVersion: "default",
         id: data.principal.id,
         roles: [data.principal.role.toString()],
         attr: {
