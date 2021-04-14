@@ -32,6 +32,14 @@ Once running, you can access GraphQL Playground [http://localhost:5000/graphql](
 ## Sample Queries
 To run these you need to set an HTTP header called `token` which identifies the user (and thus there permissions)
 
+Some exampe tokens:
+- `key:sajit:it` is an IT Admin
+- `key:joe:finance` is an EMEA Finance person
+- `kkey:sally:sales` is an EMEA Sales person
+- `key:zeena:sales` is an North America sales person
+- `key:john:manager-emea` is an EMEA Manager in sales
+- `key:brock:manager-na` is an North America Manager in sales
+
 ### Get an Expense
 
 ```
