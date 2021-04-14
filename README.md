@@ -30,5 +30,32 @@ Once running, you can access GraphQL Playground [http://localhost:5000/graphql](
 - Finance can approve all invoices
 
 ## Sample Queries
+To run these you need to set an HTTP header called `token` which identifies the user (and thus there permissions)
 
-Coming soon....
+### Get an Expense
+
+```
+{
+  expense(id: "expense2") {
+    id
+    amount
+    status
+    vendor {
+      name
+    }
+    createdBy {
+      name
+    }
+    approvedBy {
+      name
+    }
+  }
+}
+```
+
+### Approve an Expense
+```
+mutation {
+  approveExpense(id: "expense1")
+}
+```
