@@ -1,5 +1,5 @@
-import { ApolloError, AuthenticationError } from "apollo-server-errors";
-import axios, { AxiosResponse } from "axios";
+import { ApolloError } from "apollo-server-errors";
+import axios from "axios";
 import { config } from "node-config-ts";
 import { Service } from "typedi";
 import { v4 as uuidv4 } from "uuid";
@@ -8,7 +8,7 @@ import logger from "../utils/logger";
 
 const log = logger("CerbosService");
 
-interface IAuthoize {
+interface IAuthorize {
   action: string;
   resource: {
     policyVersion?: any;
@@ -23,7 +23,7 @@ enum AuthorizeEffect {
   DENY = "EFFECT_DENY",
 }
 
-interface IAuthoizeResponse {
+interface IAuthorizeResponse {
   requestID: string;
   statusCode: number;
   statusMessage: string;
@@ -41,7 +41,7 @@ export class AuthorizationError extends ApolloError {
 export class CerbosService {
   constructor() {}
 
-  async authoize(data: IAuthoize): Promise<boolean> {
+  async authoize(data: IAuthorize): Promise<boolean> {
     log.info(
       `authorize action: ${data.action} principalId: ${data.principal.id}`
     );
@@ -64,7 +64,7 @@ export class CerbosService {
     };
 
     try {
-      const response = await axios.post<IAuthoizeResponse>(
+      const response = await axios.post<IAuthorizeResponse>(
         `${config.cerbos.host}/api/check`,
         payload
       );
