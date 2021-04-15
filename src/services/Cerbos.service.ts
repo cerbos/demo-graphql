@@ -18,7 +18,7 @@ interface IAuthoize {
   principal: User;
 }
 
-enum AuthoizeEffect {
+enum AuthorizeEffect {
   ALLOW = "EFFECT_ALLOW",
   DENY = "EFFECT_DENY",
 }
@@ -27,7 +27,7 @@ interface IAuthoizeResponse {
   requestID: string;
   statusCode: number;
   statusMessage: string;
-  effect: AuthoizeEffect;
+  effect: AuthorizeEffect;
 }
 
 export class AuthorizationError extends ApolloError {
@@ -68,7 +68,7 @@ export class CerbosService {
         `${config.cerbos.host}/api/check`,
         payload
       );
-      return response.data.effect == AuthoizeEffect.ALLOW;
+      return response.data.effect == AuthorizeEffect.ALLOW;
     } catch (e) {
       throw new AuthorizationError("Error authorizing");
     }
