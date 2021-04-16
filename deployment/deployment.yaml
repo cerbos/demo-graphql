@@ -5,7 +5,7 @@ metadata:
   labels:
     app: cerbos-demo-graphql
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: cerbos-demo-graphql
