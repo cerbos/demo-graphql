@@ -42,7 +42,6 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           push: true
-          load: true
           tags: ghcr.io/cerbos/demo-graphql:${{ steps.vars.outputs.tag }}
 
       - name: Build and push cerbos
@@ -51,5 +50,4 @@ jobs:
           context: ./cerbos
           platforms: linux/amd64,linux/arm64
           push: true
-          load: true
           tags: ghcr.io/cerbos/demo-graphql-cerbos:${{ steps.vars.outputs.tag }}
