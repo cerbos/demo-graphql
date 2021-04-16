@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cerbos-demo-graphql-deployment
+  labels:
+    app: cerbos-demo-graphql
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: cerbos-demo-graphql
+  template:
+    metadata:
+      labels:
+        app: cerbos-demo-graphql
+    spec:
+      imagePullSecrets:
+        - name: github-packages-token    
+      containers:
+      - name: demo-graphql
+        image: ghcr.io/cerbos/demo-graphql:v0.0.9
+        ports:
+        - containerPort: 5000
+      - name: cerbos
+        image: ghcr.io/cerbos/demo-graphql-cerbos:v0.0.9
+        ports:
+        - containerPort: 9999
