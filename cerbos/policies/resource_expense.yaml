@@ -21,6 +21,7 @@ resourcePolicy:
       derivedRoles:
         - OWNER
         - FINANCE
+        - REGION_MANAGER
     - actions: ['approve']
       effect: EFFECT_ALLOW
       derivedRoles:

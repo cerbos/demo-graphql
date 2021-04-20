@@ -1,4 +1,4 @@
-FROM ghcr.io/cerbos/cerbos:0.0.0-alpha4 
+FROM ghcr.io/cerbos/cerbos:0.0.0-alpha5 
 LABEL org.opencontainers.image.source https://github.com/cerbos/demo-graphql
 COPY /policies /policies
 COPY /config /config
