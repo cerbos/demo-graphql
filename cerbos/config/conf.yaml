@@ -7,3 +7,4 @@ storage:
   disk: # Only required if "driver" is "disk"
     directory: /policies
     readOnly: true # Set to false if you want to write new policies to disk through
+    watchForChanges: true # Set to true for demo purposes
