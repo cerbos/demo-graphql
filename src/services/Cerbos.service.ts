@@ -9,11 +9,17 @@ import logger from "../utils/logger";
 const log = logger("CerbosService");
 
 interface IAuthorize {
-  action: string;
+  actions: [string];
   resource: {
     policyVersion?: any;
     name: string;
-    attr: any;
+    instances: {
+      [resourceKey: string]: {
+        attr: {
+          [key: string]: any;
+        }
+      }
+    };
   };
   principal: User;
 }
@@ -25,9 +31,30 @@ enum AuthorizeEffect {
 
 interface IAuthorizeResponse {
   requestID: string;
-  statusCode: number;
-  statusMessage: string;
-  effect: AuthorizeEffect;
+  resourceInstances: {
+    [resourceKey: string]: {
+      actions: {
+        [action: string]: AuthorizeEffect;
+      }
+    }
+  };
+}
+
+export interface ICerbosResponse {
+  isAuthorized: (resourceKey: string, action: string) => boolean
+}
+
+class CerbosResponseWrapper implements ICerbosResponse {
+  readonly resp: IAuthorizeResponse;
+
+  constructor(resp: IAuthorizeResponse) {
+    this.resp = resp
+  }
+
+  isAuthorized(resourceKey: string, action: string): boolean {
+    let allowed = this.resp.resourceInstances[resourceKey]?.actions[action] == AuthorizeEffect.ALLOW;
+    return allowed ?? false
+  }
 }
 
 export class AuthorizationError extends ApolloError {
@@ -39,11 +66,11 @@ export class AuthorizationError extends ApolloError {
 
 @Service({ global: true })
 export class CerbosService {
-  constructor() {}
+  constructor() { }
 
-  async authoize(data: IAuthorize): Promise<boolean> {
+  async authoize(data: IAuthorize): Promise<ICerbosResponse> {
     log.info(
-      `authorize action: ${data.action} principalId: ${data.principal.id}`
+      `authorize action: ${data.actions} principalId: ${data.principal.id}`
     );
     const payload = {
       requestId: uuidv4(),
@@ -68,7 +95,8 @@ export class CerbosService {
         `${config.cerbos.host}/api/check`,
         payload
       );
-      return response.data.effect == AuthorizeEffect.ALLOW;
+      console.log(response.data);
+      return new CerbosResponseWrapper(response.data);
     } catch (e) {
       throw new AuthorizationError("Error authorizing");
     }
