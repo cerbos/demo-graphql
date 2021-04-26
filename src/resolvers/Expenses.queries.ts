@@ -34,22 +34,26 @@ class ExpensesQueries {
   ): Promise<Expense> {
     // Get the expense by ID
     const expense = await this.expensesService.get(id);
-    if(!expense) throw new ApolloError("Expense not found");
+    if (!expense) throw new ApolloError("Expense not found");
     // This will authorize the user against cerbos or else through an authorization error
-    const isAuthorized = await this.cerbos.authoize({
-      action: "view",
+    const cerbosResp = await this.cerbos.authoize({
+      actions: ["view"],
       resource: {
         name: "expense:object",
-        attr: {
-          id,
-          region: expense.region.toString(),
-          status: expense.status.toString(),
-          ownerId: expense.createdBy.id,
+        instances: {
+          "thisExpense": {
+            attr: {
+              "id": id,
+              "region": expense.region.toString(),
+              "status": expense.status.toString(),
+              "ownerId": expense.createdBy.id,
+            },
+          },
         },
       },
       principal: context.user,
     });
-    if (!isAuthorized) throw new AuthorizationError("Access denied");
+    if (!cerbosResp.isAuthorized("thisExpense", "view")) throw new AuthorizationError("Access denied");
     // Return the invoice
     return expense;
   }
@@ -61,22 +65,26 @@ class ExpensesQueries {
   ): Promise<boolean> {
     // Get the invoice by ID
     const expense = await this.expensesService.get(id);
-    if(!expense) throw new ApolloError("Expense not found");
+    if (!expense) throw new ApolloError("Expense not found");
     // This will authorize the user against cerbos or else through an authorization error
-    const isAuthorized = await this.cerbos.authoize({
-      action: "approve",
+    const cerbosResp = await this.cerbos.authoize({
+      actions: ["approve"],
       resource: {
         name: "expense:object",
-        attr: {
-          id,
-          region: expense.region.toString(),
-          status: expense.status.toString(),
-          ownerId: expense.createdBy.id,
+        instances: {
+          "thisExpense": {
+            attr: {
+              "id": id,
+              "region": expense.region.toString(),
+              "status": expense.status.toString(),
+              "ownerId": expense.createdBy.id,
+            },
+          },
         },
       },
       principal: context.user,
     });
-    if (!isAuthorized) throw new AuthorizationError("Access denied");
+    if (!cerbosResp.isAuthorized("thisExpense", "approve")) throw new AuthorizationError("Access denied");
     // Do the actual approval call here....pretend it worked for now
     return true;
   }

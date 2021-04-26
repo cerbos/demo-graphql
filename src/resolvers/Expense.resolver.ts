@@ -27,21 +27,25 @@ class ExpensesResolver implements ResolverInterface<Expense> {
     @Ctx() context: IContext
   ): Promise<User> {
     // see if the user is allowed to see who approved it
-    const isAuthorized = await this.cerbos.authoize({
-      action: "view:approver",
+    const cerbosResp = await this.cerbos.authoize({
+      actions: ["view:approver"],
       resource: {
         name: "expense:object",
-        attr: {
-          id: expense.id,
-          region: expense.region.toString(),
-          status: expense.status.toString(),
-          ownerId: expense.createdBy.id,
+        instances: {
+          "thisExpense": {
+            attr: {
+              "id": expense.id,
+              "region": expense.region.toString(),
+              "status": expense.status.toString(),
+              "ownerId": expense.createdBy.id,
+            },
+          },
         },
       },
       principal: context.user,
     });
     // Authorised so return the value
-    return isAuthorized ? expense.approvedBy : null;
+    return cerbosResp.isAuthorized("thisExpense", "view:approver") ? expense.approvedBy : null;
   }
 }
 
