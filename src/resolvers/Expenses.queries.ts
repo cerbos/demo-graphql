@@ -41,7 +41,7 @@ class ExpensesQueries {
       resource: {
         name: "expense:object",
         instances: {
-          "thisExpense": {
+          [expense.id]: {
             attr: {
               "id": id,
               "region": expense.region.toString(),
@@ -53,7 +53,7 @@ class ExpensesQueries {
       },
       principal: context.user,
     });
-    if (!cerbosResp.isAuthorized("thisExpense", "view")) throw new AuthorizationError("Access denied");
+    if (!cerbosResp.isAuthorized(expense.id, "view")) throw new AuthorizationError("Access denied");
     // Return the invoice
     return expense;
   }
@@ -72,7 +72,7 @@ class ExpensesQueries {
       resource: {
         name: "expense:object",
         instances: {
-          "thisExpense": {
+          [expense.id]: {
             attr: {
               "id": id,
               "region": expense.region.toString(),
@@ -84,7 +84,7 @@ class ExpensesQueries {
       },
       principal: context.user,
     });
-    if (!cerbosResp.isAuthorized("thisExpense", "approve")) throw new AuthorizationError("Access denied");
+    if (!cerbosResp.isAuthorized(expense.id, "approve")) throw new AuthorizationError("Access denied");
     // Do the actual approval call here....pretend it worked for now
     return true;
   }

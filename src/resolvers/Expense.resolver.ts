@@ -32,7 +32,7 @@ class ExpensesResolver implements ResolverInterface<Expense> {
       resource: {
         name: "expense:object",
         instances: {
-          "thisExpense": {
+          [expense.id]: {
             attr: {
               "id": expense.id,
               "region": expense.region.toString(),
@@ -45,7 +45,7 @@ class ExpensesResolver implements ResolverInterface<Expense> {
       principal: context.user,
     });
     // Authorised so return the value
-    return cerbosResp.isAuthorized("thisExpense", "view:approver") ? expense.approvedBy : null;
+    return cerbosResp.isAuthorized(expense.id, "view:approver") ? expense.approvedBy : null;
   }
 }
 
