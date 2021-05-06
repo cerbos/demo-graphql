@@ -1,3 +1,4 @@
+import DataLoader from "dataloader";
 import {
   Ctx,
   FieldResolver,
@@ -20,6 +21,8 @@ const log = logger("ExpensesResolver");
 class ExpensesResolver implements ResolverInterface<Expense> {
   @Inject(() => CerbosService)
   private cerbos: CerbosService;
+
+  // private approvedByAuthLoader: DataLoader;
 
   @FieldResolver()
   async approvedBy(
