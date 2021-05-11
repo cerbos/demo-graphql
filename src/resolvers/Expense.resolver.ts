@@ -30,7 +30,7 @@ class ExpensesResolver implements ResolverInterface<Expense> {
     const cerbosResp = await this.cerbos.authoize({
       actions: ["view:approver"],
       resource: {
-        name: "expense:object",
+        kind: "expense:object",
         instances: {
           [expense.id]: {
             attr: {

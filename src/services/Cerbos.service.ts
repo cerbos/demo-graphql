@@ -12,7 +12,7 @@ interface IAuthorize {
   actions: [string];
   resource: {
     policyVersion?: any;
-    name: string;
+    kind: string;
     instances: {
       [resourceKey: string]: {
         attr: {
