@@ -17,8 +17,8 @@ interface IAuthorize {
       [resourceKey: string]: {
         attr: {
           [key: string]: any;
-        }
-      }
+        };
+      };
     };
   };
   principal: User;
@@ -35,25 +35,27 @@ interface IAuthorizeResponse {
     [resourceKey: string]: {
       actions: {
         [action: string]: AuthorizeEffect;
-      }
-    }
+      };
+    };
   };
 }
 
 export interface ICerbosResponse {
-  isAuthorized: (resourceKey: string, action: string) => boolean
+  isAuthorized: (resourceKey: string, action: string) => boolean;
 }
 
 class CerbosResponseWrapper implements ICerbosResponse {
   readonly resp: IAuthorizeResponse;
 
   constructor(resp: IAuthorizeResponse) {
-    this.resp = resp
+    this.resp = resp;
   }
 
   isAuthorized(resourceKey: string, action: string): boolean {
-    let allowed = this.resp.resourceInstances[resourceKey]?.actions[action] == AuthorizeEffect.ALLOW;
-    return allowed ?? false
+    let allowed =
+      this.resp.resourceInstances[resourceKey]?.actions[action] ==
+      AuthorizeEffect.ALLOW;
+    return allowed ?? false;
   }
 }
 
@@ -66,7 +68,7 @@ export class AuthorizationError extends ApolloError {
 
 @Service({ global: true })
 export class CerbosService {
-  constructor() { }
+  constructor() {}
 
   async authoize(data: IAuthorize): Promise<ICerbosResponse> {
     log.info(
@@ -90,14 +92,14 @@ export class CerbosService {
       },
     };
 
-    log.info(JSON.stringify(payload,null,2));
+    // log.info(JSON.stringify(payload,null,2));
 
     try {
       const response = await axios.post<IAuthorizeResponse>(
         `${config.cerbos.host}/api/check`,
         payload
       );
-      log.info(JSON.stringify(response.data,null,2));
+      // log.info(JSON.stringify(response.data,null,2));
       return new CerbosResponseWrapper(response.data);
     } catch (e) {
       throw new AuthorizationError("Error authorizing");

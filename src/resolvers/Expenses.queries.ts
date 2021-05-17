@@ -29,13 +29,13 @@ class ExpensesQueries {
 
     let expenseRequests = {};
 
-    expenses.forEach(expense => {
+    expenses.forEach((expense) => {
       expenseRequests[expense.id] = {
         attr: {
-          "id": expense.id,
-          "region": expense.region.toString(),
-          "status": expense.status.toString(),
-          "ownerId": expense.createdBy.id,
+          id: expense.id,
+          region: expense.region.toString(),
+          status: expense.status.toString(),
+          ownerId: expense.createdBy.id,
         },
       };
     });
@@ -43,13 +43,15 @@ class ExpensesQueries {
     const cerbosResp = await this.cerbos.authoize({
       actions: [action],
       resource: {
-        name: "expense:object",
-        instances: expenseRequests
+        kind: "expense:object",
+        instances: expenseRequests,
       },
       principal: context.user,
     });
 
-    return expenses.filter(expense => cerbosResp.isAuthorized(expense.id, action));
+    return expenses.filter((expense) =>
+      cerbosResp.isAuthorized(expense.id, action)
+    );
   }
 
   @Query((returns) => Expense)
@@ -68,17 +70,18 @@ class ExpensesQueries {
         instances: {
           [expense.id]: {
             attr: {
-              "id": id,
-              "region": expense.region.toString(),
-              "status": expense.status.toString(),
-              "ownerId": expense.createdBy.id,
+              id: id,
+              region: expense.region.toString(),
+              status: expense.status.toString(),
+              ownerId: expense.createdBy.id,
             },
           },
         },
       },
       principal: context.user,
     });
-    if (!cerbosResp.isAuthorized(expense.id, "view")) throw new AuthorizationError("Access denied");
+    if (!cerbosResp.isAuthorized(expense.id, "view"))
+      throw new AuthorizationError("Access denied");
     // Return the invoice
     return expense;
   }
@@ -99,17 +102,18 @@ class ExpensesQueries {
         instances: {
           [expense.id]: {
             attr: {
-              "id": id,
-              "region": expense.region.toString(),
-              "status": expense.status.toString(),
-              "ownerId": expense.createdBy.id,
+              id: id,
+              region: expense.region.toString(),
+              status: expense.status.toString(),
+              ownerId: expense.createdBy.id,
             },
           },
         },
       },
       principal: context.user,
     });
-    if (!cerbosResp.isAuthorized(expense.id, "approve")) throw new AuthorizationError("Access denied");
+    if (!cerbosResp.isAuthorized(expense.id, "approve"))
+      throw new AuthorizationError("Access denied");
     // Do the actual approval call here....pretend it worked for now
     return true;
   }
