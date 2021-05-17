@@ -23,8 +23,33 @@ class ExpensesQueries {
   }
 
   @Query((returns) => [Expense])
-  async expenses(): Promise<Expense[]> {
-    return this.expensesService.list();
+  async expenses(@Ctx() context: IContext): Promise<Expense[]> {
+    const expenses = await this.expensesService.list();
+    const action = "view";
+
+    let expenseRequests = {};
+
+    expenses.forEach(expense => {
+      expenseRequests[expense.id] = {
+        attr: {
+          "id": expense.id,
+          "region": expense.region.toString(),
+          "status": expense.status.toString(),
+          "ownerId": expense.createdBy.id,
+        },
+      };
+    });
+
+    const cerbosResp = await this.cerbos.authoize({
+      actions: [action],
+      resource: {
+        name: "expense:object",
+        instances: expenseRequests
+      },
+      principal: context.user,
+    });
+
+    return expenses.filter(expense => cerbosResp.isAuthorized(expense.id, action));
   }
 
   @Query((returns) => Expense)

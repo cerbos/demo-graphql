@@ -90,12 +90,14 @@ export class CerbosService {
       },
     };
 
+    log.info(JSON.stringify(payload,null,2));
+
     try {
       const response = await axios.post<IAuthorizeResponse>(
         `${config.cerbos.host}/api/check`,
         payload
       );
-      console.log(response.data);
+      log.info(JSON.stringify(response.data,null,2));
       return new CerbosResponseWrapper(response.data);
     } catch (e) {
       throw new AuthorizationError("Error authorizing");
