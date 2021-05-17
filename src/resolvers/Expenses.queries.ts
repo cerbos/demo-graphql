@@ -39,7 +39,7 @@ class ExpensesQueries {
     const cerbosResp = await this.cerbos.authoize({
       actions: ["view"],
       resource: {
-        name: "expense:object",
+        kind: "expense:object",
         instances: {
           [expense.id]: {
             attr: {
@@ -70,7 +70,7 @@ class ExpensesQueries {
     const cerbosResp = await this.cerbos.authoize({
       actions: ["approve"],
       resource: {
-        name: "expense:object",
+        kind: "expense:object",
         instances: {
           [expense.id]: {
             attr: {

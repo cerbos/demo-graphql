@@ -5,7 +5,7 @@ This project showcases using Cerbos inside of a GraphQL server. The server is wr
 ## Setup
 
 - Have Node v12+ on your machine (recommend using NVM)
-- Ensure your Docker is setup to pull `ghcr.io/cerbos/cerbos:0.0.0-alpha6`
+- Ensure your Docker is setup to pull `ghcr.io/cerbos/cerbos:0.0.0-alpha10`
 - Run `npm install` to get the node dependancies.
 
 ## Running
@@ -35,7 +35,7 @@ To run these you need to set an HTTP header called `token` which identifies the 
 Some exampe tokens:
 - `key:sajit:it` is an IT Admin
 - `key:joe:finance` is an EMEA Finance person
-- `kkey:sally:sales` is an EMEA Sales person
+- `key:sally:sales` is an EMEA Sales person
 - `key:zeena:sales` is an North America sales person
 - `key:john:manager-emea` is an EMEA Manager in sales
 - `key:brock:manager-na` is an North America Manager in sales
