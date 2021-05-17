@@ -10,7 +10,7 @@ This project showcases using Cerbos inside of a GraphQL server. The server is wr
 
 ## Running
 
-Cerbos is running separately in a docker container to the application and served on [http://localhost:9999](http://localhost:9999). To start this run `cerbos/start.sh`
+Cerbos is running separately in a docker container to the application and served on [http://localhost:9999](http://localhost:9999). To start this run `cd cerbos && ./start.sh`
 
 To boot the GraphQL server run `npm run start`
 
