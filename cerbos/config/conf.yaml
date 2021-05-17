@@ -1,6 +1,7 @@
 ---
 server:
   httpListenAddr: ":9999"
+  logRequestPayloads: true
 
 storage:
   driver: "disk" # Valid values are "disk" or "git"
