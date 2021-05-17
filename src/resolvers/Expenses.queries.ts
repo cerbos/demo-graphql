@@ -2,7 +2,11 @@ import { ApolloError } from "apollo-server-errors";
 import { Arg, Ctx, Mutation, Query, Resolver } from "type-graphql";
 import { Inject, Service } from "typedi";
 import { IContext } from "../server/context.interface";
-import { AuthorizationError, CerbosService } from "../services/Cerbos.service";
+import {
+  AuthorizationError,
+  AuthorizeEffect,
+  CerbosService,
+} from "../services/Cerbos.service";
 import { ExpensesService } from "../services/Expenses.service";
 import Expense from "../types/Expense.type";
 
@@ -27,30 +31,26 @@ class ExpensesQueries {
     const expenses = await this.expensesService.list();
     const action = "view";
 
-    let expenseRequests = {};
+    const authorized = await context.loaders.authorize.loadMany(
+      expenses.map((expense) => {
+        return {
+          actions: [action],
+          resource: {
+            id: expense.id,
+            kind: "expense:object",
+            attr: {
+              id: expense.id,
+              region: expense.region.toString(),
+              status: expense.status.toString(),
+              ownerId: expense.createdBy.id,
+            },
+          },
+        };
+      })
+    );
 
-    expenses.forEach((expense) => {
-      expenseRequests[expense.id] = {
-        attr: {
-          id: expense.id,
-          region: expense.region.toString(),
-          status: expense.status.toString(),
-          ownerId: expense.createdBy.id,
-        },
-      };
-    });
-
-    const cerbosResp = await this.cerbos.authoize({
-      actions: [action],
-      resource: {
-        kind: "expense:object",
-        instances: expenseRequests,
-      },
-      principal: context.user,
-    });
-
-    return expenses.filter((expense) =>
-      cerbosResp.isAuthorized(expense.id, action)
+    return expenses.filter(
+      (_, i) => authorized[i][action] === AuthorizeEffect.ALLOW
     );
   }
 
@@ -63,24 +63,22 @@ class ExpensesQueries {
     const expense = await this.expensesService.get(id);
     if (!expense) throw new ApolloError("Expense not found");
     // This will authorize the user against cerbos or else through an authorization error
-    const cerbosResp = await this.cerbos.authoize({
+
+    const authorized = await context.loaders.authorize.load({
       actions: ["view"],
       resource: {
+        id: expense.id,
         kind: "expense:object",
-        instances: {
-          [expense.id]: {
-            attr: {
-              id: id,
-              region: expense.region.toString(),
-              status: expense.status.toString(),
-              ownerId: expense.createdBy.id,
-            },
-          },
+        attr: {
+          id: expense.id,
+          region: expense.region.toString(),
+          status: expense.status.toString(),
+          ownerId: expense.createdBy.id,
         },
       },
-      principal: context.user,
     });
-    if (!cerbosResp.isAuthorized(expense.id, "view"))
+
+    if (authorized["view"] !== AuthorizeEffect.ALLOW)
       throw new AuthorizationError("Access denied");
     // Return the invoice
     return expense;
@@ -95,26 +93,24 @@ class ExpensesQueries {
     const expense = await this.expensesService.get(id);
     if (!expense) throw new ApolloError("Expense not found");
     // This will authorize the user against cerbos or else through an authorization error
-    const cerbosResp = await this.cerbos.authoize({
+
+    const authorized = await context.loaders.authorize.load({
       actions: ["approve"],
       resource: {
+        id: expense.id,
         kind: "expense:object",
-        instances: {
-          [expense.id]: {
-            attr: {
-              id: id,
-              region: expense.region.toString(),
-              status: expense.status.toString(),
-              ownerId: expense.createdBy.id,
-            },
-          },
+        attr: {
+          id: expense.id,
+          region: expense.region.toString(),
+          status: expense.status.toString(),
+          ownerId: expense.createdBy.id,
         },
       },
-      principal: context.user,
     });
-    if (!cerbosResp.isAuthorized(expense.id, "approve"))
+
+    if (authorized["approve"] !== AuthorizeEffect.ALLOW)
       throw new AuthorizationError("Access denied");
-    // Do the actual approval call here....pretend it worked for now
+
     return true;
   }
 }

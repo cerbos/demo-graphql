@@ -3,10 +3,18 @@ import axios from "axios";
 import { config } from "node-config-ts";
 import { Service } from "typedi";
 import { v4 as uuidv4 } from "uuid";
-import User from "../types/User.type";
 import logger from "../utils/logger";
 
 const log = logger("CerbosService");
+
+interface IPrincipal {
+  id: string;
+  policyVersion?: any;
+  roles: [string];
+  attr: {
+    [key: string]: any;
+  };
+}
 
 interface IAuthorize {
   actions: [string];
@@ -21,12 +29,7 @@ interface IAuthorize {
       };
     };
   };
-  principal: User;
-}
-
-enum AuthorizeEffect {
-  ALLOW = "EFFECT_ALLOW",
-  DENY = "EFFECT_DENY",
+  principal: IPrincipal;
 }
 
 interface IAuthorizeResponse {
@@ -34,10 +37,44 @@ interface IAuthorizeResponse {
   resourceInstances: {
     [resourceKey: string]: {
       actions: {
-        [action: string]: AuthorizeEffect;
+        [key: string]: AuthorizeEffect;
       };
     };
   };
+}
+
+export interface ICerbosBatchAuthorizeResource {
+  actions: [string];
+  resource: {
+    policyVersion?: any;
+    kind: string;
+    id: string;
+    attr: {
+      [key: string]: any;
+    };
+  };
+}
+
+export interface ICerbosBatchAuthorizeResult {
+  [key: string]: AuthorizeEffect;
+}
+
+interface IBatchAuthorize {
+  principal: IPrincipal;
+  resources: ICerbosBatchAuthorizeResource[];
+}
+
+interface IAuthorizeBatchResponse {
+  requestID: string;
+  results: {
+    resourceId: string;
+    actions: ICerbosBatchAuthorizeResult;
+  }[];
+}
+
+export enum AuthorizeEffect {
+  ALLOW = "EFFECT_ALLOW",
+  DENY = "EFFECT_DENY",
 }
 
 export interface ICerbosResponse {
@@ -59,6 +96,13 @@ class CerbosResponseWrapper implements ICerbosResponse {
   }
 }
 
+interface ICerbosBatchResponse {
+  resourceId: string;
+  actions: {
+    [action: string]: AuthorizeEffect;
+  };
+}
+
 export class AuthorizationError extends ApolloError {
   constructor(message: string) {
     super(message, "AUTHORIZATION_ERROR");
@@ -70,7 +114,7 @@ export class AuthorizationError extends ApolloError {
 export class CerbosService {
   constructor() {}
 
-  async authoize(data: IAuthorize): Promise<ICerbosResponse> {
+  async authorize(data: IAuthorize): Promise<ICerbosResponse> {
     log.info(
       `authorize action: ${data.actions} principalId: ${data.principal.id}`
     );
@@ -78,17 +122,12 @@ export class CerbosService {
       requestId: uuidv4(),
       ...data,
       resource: {
-        policyVersion: "default",
+        policyVersion: data.resource.policyVersion || "default",
         ...data.resource,
       },
       principal: {
-        policyVersion: "default",
-        id: data.principal.id,
-        roles: [data.principal.role.toString()],
-        attr: {
-          department: data.principal.department.toString(),
-          region: data.principal.region?.toString(),
-        },
+        policyVersion: data.principal.policyVersion || "default",
+        ...data.principal,
       },
     };
 
@@ -101,6 +140,40 @@ export class CerbosService {
       );
       // log.info(JSON.stringify(response.data,null,2));
       return new CerbosResponseWrapper(response.data);
+    } catch (e) {
+      throw new AuthorizationError("Error authorizing");
+    }
+  }
+
+  async authorizeBatch(data: IBatchAuthorize): Promise<ICerbosBatchResponse[]> {
+    log.info(
+      `authorizeBatch action: principalId: ${data.principal.id} batchSize: ${data.resources.length}`
+    );
+    const payload = {
+      requestId: uuidv4(),
+      principal: {
+        policyVersion: data.principal.policyVersion || "default",
+        ...data.principal,
+      },
+      resources: data.resources.map((r) => {
+        return {
+          actions: r.actions,
+          resource: {
+            policyVersion: r.resource.policyVersion || "default",
+            ...r.resource,
+          },
+        };
+      }),
+    };
+
+    try {
+      const response = await axios.post<IAuthorizeBatchResponse>(
+        `${config.cerbos.host}/api/x/check_resource_batch`,
+        payload
+      );
+      // Return the results in the same order of the inputs
+      console.log(response.data.results);
+      return response.data.results;
     } catch (e) {
       throw new AuthorizationError("Error authorizing");
     }
