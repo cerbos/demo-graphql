@@ -7,6 +7,6 @@
     "introspection": true
   },
   "cerbos": {
-    "host": "http://localhost:9999"
+    "host": "http://localhost:3592"
   }
 }
