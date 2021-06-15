@@ -73,8 +73,7 @@ mutation {
 
 ## Demo Video in action
 
-![alt text](http://url/to/img.png)
 <a href="https://www.loom.com/share/cb213efcc1674229b0084a7198b232e5">
-    <p>Cerbos GraphQL demo (ulrike) - Watch Video</p>
+    <p>Cerbos GraphQL Demo - Watch Video</p>
     <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/cb213efcc1674229b0084a7198b232e5-with-play.gif">
 </a>
