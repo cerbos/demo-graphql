@@ -71,7 +71,7 @@ mutation {
 }
 ```
 
-## Demo Video in action
+## Demo Video - Watch this demo with commentary
 
 <a href="https://www.loom.com/share/cb213efcc1674229b0084a7198b232e5">
     <p>Cerbos GraphQL Demo - Watch Video</p>
