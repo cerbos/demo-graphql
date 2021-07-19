@@ -1,3 +1,6 @@
+// Copyright 2021 Zenauth Ltd.
+// SPDX-License-Identifier: Apache-2.0
+
 import { ApolloError } from "apollo-server-errors";
 import axios from "axios";
 import { config } from "node-config-ts";
@@ -168,7 +171,7 @@ export class CerbosService {
 
     try {
       const response = await axios.post<IAuthorizeBatchResponse>(
-        `${config.cerbos.host}/api/x/check_resource_batch`,
+        `${config.cerbos.host}/api/check_resource_batch`,
         payload
       );
       // Return the results in the same order of the inputs

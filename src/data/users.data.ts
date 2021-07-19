@@ -1,3 +1,6 @@
+// Copyright 2021 Zenauth Ltd.
+// SPDX-License-Identifier: Apache-2.0
+
 import User from "../types/User.type";
 import { Departments } from "./departments.data";
 import { Region } from "./regions.data";

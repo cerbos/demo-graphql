@@ -1,3 +1,6 @@
+// Copyright 2021 Zenauth Ltd.
+// SPDX-License-Identifier: Apache-2.0
+
 import { Service } from "typedi";
 import { expenseById, Expenses } from "../data/expenses.data";
 import Expense from "../types/Expense.type";
