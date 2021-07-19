@@ -5,9 +5,9 @@ This project showcases using Cerbos inside of a GraphQL server. The server is wr
 ## Setup
 
 - Have Node v12+ on your machine (recommend using NVM)
-- Ensure your Docker is setup to pull `pkg.cerbos.dev/containers/cerbos:0.0.1`
+- Ensure your Docker is setup to pull `pkg.cerbos.dev/containers/cerbos:0.3.0`
     ```sh
-    echo YOUR_API_KEY | docker login pkg.cerbos.dev -u YOUR_USERNAME --password-stdin
+    echo CERBOS_KEY | docker login pkg.cerbos.dev -u cerbos-ea --password-stdin
     ```
 - Run `npm install` to get the node dependencies.
 

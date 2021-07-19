@@ -1,3 +1,6 @@
+// Copyright 2021 Zenauth Ltd.
+// SPDX-License-Identifier: Apache-2.0
+
 import Expense from "../types/Expense.type";
 import { companyById } from "./companies.data";
 import { Region } from "./regions.data";
