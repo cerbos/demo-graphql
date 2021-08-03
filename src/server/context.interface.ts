@@ -1,3 +1,6 @@
+// Copyright 2021 Zenauth Ltd.
+// SPDX-License-Identifier: Apache-2.0
+
 import { ExpressContext } from "apollo-server-express/dist/ApolloServer";
 import DataLoader from "dataloader";
 import {

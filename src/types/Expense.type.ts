@@ -1,3 +1,6 @@
+// Copyright 2021 Zenauth Ltd.
+// SPDX-License-Identifier: Apache-2.0
+
 import { Field, ObjectType } from "type-graphql";
 import { ExpenseStatus } from "../data/expenses.data";
 
