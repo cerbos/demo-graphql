@@ -2,5 +2,5 @@
 
 docker run -i -t \
 -v $(pwd)/policies:/policies \
-pkg.cerbos.dev/containers/cerbos:0.3.0 \
+ghcr.io/cerbos/cerbos:0.4.0 \
 compile /policies
