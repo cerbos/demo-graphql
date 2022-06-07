@@ -2,14 +2,14 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { ApolloError } from "apollo-server-errors";
-import { Arg, Ctx, Mutation, Query, Resolver } from "type-graphql";
+import { Arg, Ctx, Mutation, Query } from "type-graphql";
 import { Inject, Service } from "typedi";
 import { IContext } from "../server/context.interface";
 import {
   AuthorizationError,
-  AuthorizeEffect,
   CerbosService,
 } from "../services/Cerbos.service";
+import { Effect, CheckResourcesResult } from "@cerbos/core";
 import { ExpensesService } from "../services/Expenses.service";
 import Expense from "../types/Expense.type";
 
@@ -52,8 +52,10 @@ class ExpensesQueries {
       })
     );
 
+
+
     return expenses.filter(
-      (_, i) => authorized[i][action] === AuthorizeEffect.ALLOW
+      (_, i) => (authorized[i] as CheckResourcesResult).actions[action] === Effect.ALLOW
     );
   }
 
@@ -72,7 +74,7 @@ class ExpensesQueries {
       resource: {
         id: expense.id,
         kind: "expense:object",
-        attr: {
+        attributes: {
           id: expense.id,
           region: expense.region.toString(),
           status: expense.status.toString(),
@@ -80,8 +82,8 @@ class ExpensesQueries {
         },
       },
     });
-
-    if (authorized["view"] !== AuthorizeEffect.ALLOW)
+    console.log(authorized)
+    if (authorized.actions["view"] !== Effect.ALLOW)
       throw new AuthorizationError("Access denied");
     // Return the invoice
     return expense;
@@ -102,7 +104,7 @@ class ExpensesQueries {
       resource: {
         id: expense.id,
         kind: "expense:object",
-        attr: {
+        attributes: {
           id: expense.id,
           region: expense.region.toString(),
           status: expense.status.toString(),
@@ -111,7 +113,7 @@ class ExpensesQueries {
       },
     });
 
-    if (authorized["approve"] !== AuthorizeEffect.ALLOW)
+    if (authorized.actions["approve"] !== Effect.ALLOW)
       throw new AuthorizationError("Access denied");
 
     return true;

@@ -3,10 +3,7 @@
 
 import { ExpressContext } from "apollo-server-express/dist/ApolloServer";
 import DataLoader from "dataloader";
-import {
-  ICerbosBatchAuthorizeResource,
-  ICerbosBatchAuthorizeResult,
-} from "../services/Cerbos.service";
+import { ResourceCheck, CheckResourcesResult } from '@cerbos/core';
 import User from "../types/User.type";
 
 export interface IContext {
@@ -15,8 +12,8 @@ export interface IContext {
   user: User;
   loaders: {
     authorize: DataLoader<
-      ICerbosBatchAuthorizeResource,
-      ICerbosBatchAuthorizeResult,
+      ResourceCheck,
+      CheckResourcesResult,
       string
     >;
   };
