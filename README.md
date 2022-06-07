@@ -5,7 +5,7 @@ This project showcases using Cerbos inside of a GraphQL server. The server is wr
 ## Setup
 
 - Have Node v12+ on your machine (recommend using NVM)
-- Ensure your Docker is setup to pull `ghcr.io/cerbos/cerbos:0.8.0`
+- Ensure your Docker is setup to pull `ghcr.io/cerbos/cerbos:0.17.0`
 - Run `npm install` to get the node dependencies.
 
 ## Running
@@ -30,9 +30,11 @@ Once running, you can access GraphQL Playground [http://localhost:5000/graphql](
 - Finance can approve all invoices
 
 ## Sample Queries
+
 To run these you need to set an HTTP header called `token` which identifies the user (and thus there permissions)
 
 Some exampe tokens:
+
 - `key:sajit:it` is an IT Admin
 - `key:joe:finance` is an EMEA Finance person
 - `key:sally:sales` is an EMEA Sales person
@@ -62,6 +64,7 @@ Some exampe tokens:
 ```
 
 ### Approve an Expense
+
 ```
 mutation {
   approveExpense(id: "expense1")
@@ -76,5 +79,7 @@ mutation {
 </a>
 
 ## Playground
+
 Launch the policy from this demo in our playground. Play with it to see how Cerbos behaves.
+
 <P><a href="https://play.cerbos.dev/p/XhkOi82fFKk3YW60e2c806Yvm0trKEje"><img src="https://github.com/cerbos/express-jwt-cerbos/blob/main/docs/launch.jpg"></a></p>
