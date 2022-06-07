@@ -1,4 +1,4 @@
-FROM node:15-slim AS base
+FROM node:16.15.0-slim AS base
 
 WORKDIR /usr/src/app
 COPY package*.json ./
@@ -10,7 +10,7 @@ RUN npm ci --prefer-offline --no-audit --ignore-engines
 RUN npm run build
 RUN npm prune --production --no-audit --ignore-engines
 
-FROM node:15-slim AS final
+FROM node:16.15.0-slim AS final
 ENV NODE_ENV=production
 WORKDIR /usr/src/app
 COPY --from=base /usr/src/app/node_modules node_modules
