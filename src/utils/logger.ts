@@ -4,7 +4,7 @@
 import winston from "winston";
 
 const logger = winston.createLogger({
-  defaultMeta: { namespace: "magellan" },
+  defaultMeta: { namespace: "demo-graphql" },
 });
 if (
   process.env.NODE_ENV === "production" ||
@@ -18,9 +18,8 @@ if (
           if (info.message && info.message.constructor === Object) {
             info.message = JSON.stringify(info.message, null, 4);
           }
-          info.message = `[${info["logNamespace"] || info["namespace"]}] ${
-            info.message
-          }`;
+          info.message = `[${info["logNamespace"] || info["namespace"]}] ${info.message
+            }`;
           if (level === "VERBOSE") {
             level = "DEBUG";
           }

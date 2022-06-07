@@ -1,7 +1,6 @@
 // Copyright 2021 Zenauth Ltd.
 // SPDX-License-Identifier: Apache-2.0
 
-import DataLoader from "dataloader";
 import {
   Ctx,
   FieldResolver,
@@ -11,7 +10,8 @@ import {
 } from "type-graphql";
 import { Inject, Service } from "typedi";
 import { IContext } from "../server/context.interface";
-import { AuthorizeEffect, CerbosService } from "../services/Cerbos.service";
+import { CerbosService } from "../services/Cerbos.service";
+import { Effect } from "@cerbos/core";
 import Expense from "../types/Expense.type";
 import User from "../types/User.type";
 
@@ -36,7 +36,7 @@ class ExpensesResolver implements ResolverInterface<Expense> {
       resource: {
         id: expense.id,
         kind: "expense:object",
-        attr: {
+        attributes: {
           id: expense.id,
           region: expense.region.toString(),
           status: expense.status.toString(),
@@ -44,7 +44,7 @@ class ExpensesResolver implements ResolverInterface<Expense> {
         },
       },
     });
-    return authorized["view:approver"] === AuthorizeEffect.ALLOW
+    return authorized["view:approver"] === Effect.ALLOW
       ? expense.approvedBy
       : null;
   }

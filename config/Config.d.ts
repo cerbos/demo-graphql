@@ -9,6 +9,7 @@ declare module "node-config-ts" {
   }
   interface Cerbos {
     host: string
+    tls: boolean
   }
   interface Graphql {
     playground: boolean

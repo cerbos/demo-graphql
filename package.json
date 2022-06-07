@@ -12,6 +12,7 @@
   "author": "Cerbos Developers",
   "license": "Apache-2.0",
   "dependencies": {
+    "@cerbos/grpc": "^0.5.1",
     "apollo-server-express": "^2.21.0",
     "axios": "^0.21.3",
     "dataloader": "^2.0.0",

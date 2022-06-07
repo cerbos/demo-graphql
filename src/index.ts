@@ -11,9 +11,9 @@ import logger from "./utils/logger";
 
 //ENABLE GLOBAL
 const startTime = new Date();
-const log = logger("megallan");
+const log = logger("demo-grapql");
 log.info(`start ENV: ${process.env.NODE_ENV}`);
-const port = config.port || 5000;
+const port = config.port || 8000;
 
 async function init() {
   const createContextFn = (request: ExpressContext) => createContext(request);

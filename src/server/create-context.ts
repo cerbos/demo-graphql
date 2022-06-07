@@ -8,8 +8,10 @@ import Container from "typedi";
 import { Users } from "../data/users.data";
 import {
   CerbosService,
-  ICerbosBatchAuthorizeResource,
 } from "../services/Cerbos.service";
+import {
+  ResourceCheck
+} from "@cerbos/core"
 import logger from "../utils/logger";
 import { IContext } from "./context.interface";
 
@@ -40,18 +42,18 @@ export default async (request: ExpressContext): Promise<IContext> => {
     user,
     loaders: {
       authorize: new DataLoader(
-        async (resources: ICerbosBatchAuthorizeResource[]) => {
-          const results = await cerbosService.authorizeBatch({
+        async (resources: ResourceCheck[]) => {
+          const results = await cerbosService.cerbos.checkResources({
             principal: {
               id: user.id,
               roles: [user.role.toString()],
-              attr: user,
+              attributes: JSON.parse(JSON.stringify(user)),
             },
             resources,
           });
           return resources.map(
             (key) =>
-              results.find((u) => u.resourceId === key.resource.id).actions
+              results.findResult({ kind: key.resource.kind, id: key.resource.id })
           );
         }
       ),
