@@ -45,7 +45,7 @@ const authorized = await context.loaders.authorize.load({
 
 ## Setup
 
-- Have Node v12+ on your machine (recommend using NVM)
+- Have Node v18+ on your machine (recommend using NVM)
 - Ensure your Docker is setup to pull `ghcr.io/cerbos/cerbos:0.17.0`
 - Run `npm install` to get the node dependencies.
 
