@@ -6,9 +6,28 @@ The Cerbos client is setup as a [global service](/src/services/Cerbos.service.ts
 
 To enable batching of requests, the authorization calls are performed via a [dataloader](https://github.com/graphql/dataloader) instance which is configured per-request in the [GraphQL server context](/src/server/create-context.ts) and automatically adds in the principal information from the request.
 
+```ts
+new DataLoader(
+  async (resources: ResourceCheck[]) => {
+    const results = await cerbosService.cerbos.checkResources({
+      principal: {
+        id: user.id,
+        roles: [user.role.toString()],
+        attributes: JSON.parse(JSON.stringify(user)),
+      },
+      resources,
+    });
+    return resources.map(
+      (key) =>
+        results.findResult({ kind: key.resource.kind, id: key.resource.id })
+    );
+  }
+)
+```
+
 Inside the GraphQL resolvers, calls to Cerbos can be done via using the context:
 
-```js
+```ts
 const authorized = await context.loaders.authorize.load({
   actions: ["view:approver"],
   resource: {
