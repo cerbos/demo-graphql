@@ -41,7 +41,7 @@ class ExpensesQueries {
           resource: {
             id: expense.id,
             kind: "expense:object",
-            attr: {
+            attributes: {
               id: expense.id,
               region: expense.region.toString(),
               status: expense.status.toString(),
