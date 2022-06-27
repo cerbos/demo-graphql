@@ -51,7 +51,7 @@ const authorized = await context.loaders.authorize.load({
 
 ## Running
 
-Cerbos is running separately in a docker container to the application and served on http://localhost:3592. To start this run `cd cerbos && ./start.sh`
+Cerbos is running separately in a docker container to the application and served on http://localhost:3593. To start this run `cd cerbos && ./start.sh`
 
 To boot the GraphQL server run `npm run start`
 
