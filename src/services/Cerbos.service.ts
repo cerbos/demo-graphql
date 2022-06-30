@@ -5,7 +5,7 @@ import { ApolloError } from "apollo-server-errors";
 import { config } from "node-config-ts";
 import { Service } from "typedi";
 
-import { GRPC } from "@cerbos/grpc";
+import { GRPC as Cerbos } from "@cerbos/grpc";
 import logger from "../utils/logger";
 
 const log = logger("CerbosService");
@@ -21,8 +21,8 @@ export class AuthorizationError extends ApolloError {
 
 @Service({ global: true })
 export class CerbosService {
-  public cerbos: GRPC;
+  public cerbos: Cerbos;
   constructor() {
-    this.cerbos = new GRPC(config.cerbos.host, { tls: config.cerbos.tls });
+    this.cerbos = new Cerbos(config.cerbos.host, { tls: config.cerbos.tls });
   }
 }
