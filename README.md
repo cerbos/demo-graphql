@@ -45,13 +45,13 @@ const authorized = await context.loaders.authorize.load({
 
 ## Setup
 
-- Have Node v12+ on your machine (recommend using NVM)
+- Have Node v18+ on your machine (recommend using NVM)
 - Ensure your Docker is setup to pull `ghcr.io/cerbos/cerbos:0.17.0`
 - Run `npm install` to get the node dependencies.
 
 ## Running
 
-Cerbos is running separately in a docker container to the application and served on http://localhost:3592. To start this run `cd cerbos && ./start.sh`
+Cerbos is running separately in a docker container to the application and served on http://localhost:3593. To start this run `cd cerbos && ./start.sh`
 
 To boot the GraphQL server run `npm run start`
 
