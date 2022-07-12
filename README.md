@@ -46,7 +46,7 @@ const authorized = await context.loaders.authorize.load({
 ## Setup
 
 - Have Node v18+ on your machine (recommend using NVM)
-- Ensure your Docker is setup to pull `ghcr.io/cerbos/cerbos:0.17.0`
+- Ensure your Docker is setup to pull `ghcr.io/cerbos/cerbos:latest`
 - Run `npm install` to get the node dependencies.
 
 ## Running
@@ -55,7 +55,7 @@ Cerbos is running separately in a docker container to the application and served
 
 To boot the GraphQL server run `npm run start`
 
-Once running, you can access GraphQL Playground [http://localhost:5000/graphql](http://localhost:5000/graphql)
+Once running, you can access GraphQL Playground [http://localhost:8000/graphql](http://localhost:8000/graphql)
 
 ## Policies
 
