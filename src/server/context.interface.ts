@@ -10,11 +10,4 @@ export interface IContext {
   req: ExpressContext["req"];
   requestId: string;
   user: User;
-  loaders: {
-    authorize: DataLoader<
-      ResourceCheck,
-      CheckResourcesResult,
-      string
-    >;
-  };
 }

@@ -1,6 +1,7 @@
 // Copyright 2021 Zenauth Ltd.
 // SPDX-License-Identifier: Apache-2.0
 
+import { authZApolloPlugin } from "@graphql-authz/apollo-server-plugin";
 import { ApolloServer } from "apollo-server-express";
 import { config } from "node-config-ts";
 import { buildSchema, registerEnumType, ResolverData } from "type-graphql";
@@ -9,7 +10,7 @@ import { Departments } from "../data/departments.data";
 import { UserRole } from "../data/users.data";
 
 import logger from "../utils/logger";
-import { authChecker } from "./auth-checker";
+import { authZRules } from "./authz-rules";
 import { IContext } from "./context.interface";
 
 const log = logger("ApolloServer");
@@ -36,27 +37,26 @@ export async function createGQLServer(
       resolvers: [__dirname + "/../**/resolvers/*.{ts,js}"],
       container: ({ context }: ResolverData<IContext>) =>
         Container.of(context.requestId),
-      authChecker: authChecker,
     });
 
     log.info("GraphQL schema built");
 
     const server = new ApolloServer({
       schema,
-      playground: config.graphql.playground,
-      tracing: config.graphql.tracing,
       introspection: config.graphql.introspection,
       context: createContextFn,
       logger: log,
       plugins: [
+        authZApolloPlugin({ rules: authZRules }),
         {
-          requestDidStart: () => ({
-            willSendResponse(requestContext) {
+          requestDidStart: () => Promise.resolve({
+            async willSendResponse(requestContext) {
               log.debug(`dispose  ${requestContext.context.requestId}`);
               Container.reset(requestContext.context.requestId);
             },
           }),
         },
+
       ],
     });
     log.info("GraphQL server created");

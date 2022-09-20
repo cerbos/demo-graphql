@@ -6,7 +6,7 @@ import { expenseById, Expenses } from "../data/expenses.data";
 import Expense from "../types/Expense.type";
 import logger from "../utils/logger";
 
-const log = logger("InvoiceService");
+const log = logger("ExpensesService");
 
 @Service({ global: true })
 export class ExpensesService {

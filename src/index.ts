@@ -1,7 +1,7 @@
 // Copyright 2021 Zenauth Ltd.
 // SPDX-License-Identifier: Apache-2.0
 
-import { ExpressContext } from "apollo-server-express";
+import { ExpressContext, gql } from "apollo-server-express";
 import express from "express";
 import { config } from "node-config-ts";
 import "reflect-metadata";
@@ -36,6 +36,7 @@ async function init() {
   });
 
   //Apply the GQL Server
+  await gqlServer.start()
   gqlServer.applyMiddleware({ app, path: "/graphql" });
 
   // Start the server

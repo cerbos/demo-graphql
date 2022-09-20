@@ -5,10 +5,12 @@ import { Field, ObjectType } from "type-graphql";
 import { ExpenseStatus } from "../data/expenses.data";
 
 import { Region } from "../data/regions.data";
+import { AuthZ } from "../server/authz-rules";
 import Company from "./Company.type";
 import User from "./User.type";
 
 @ObjectType()
+@AuthZ({ rules: ['CanReadExpense'] })
 export default class Expense {
   @Field()
   id: string;
