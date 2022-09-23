@@ -19,9 +19,6 @@ export class AuthorizationError extends ApolloError {
   }
 }
 
-
-
-
 const IsAuthenticated = preExecRule({
   error: 'User is not authenticated'
 })((context: IContext) => !!context.user);
@@ -88,9 +85,6 @@ const CanReadExpenseApprover = postExecRule({
       },
       actions: ["view:approver"],
     });
-
-    console.log(authorized)
-
     return authorized.isAllowed("view:approver")
   }
 )
@@ -122,15 +116,6 @@ const CanApproveExpense = preExecRule()(
     return authorized.isAllowed("approve")
   }
 )
-
-// const CanPublishPost = preExecRule()(
-//   async (context: IContext, fieldArgs: { postId: string }) => {
-//     const post = await Promise.resolve(
-//       posts.find(({ id }) => id === fieldArgs.postId)
-//     );
-//     return !post || post.authorId === context.user?.id;
-//   }
-// );
 
 export const authZRules = {
   IsAuthenticated,
