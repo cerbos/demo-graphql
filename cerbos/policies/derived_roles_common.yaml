@@ -2,7 +2,7 @@
 apiVersion: api.cerbos.dev/v1
 description: |-
   Common dynamic roles used within the Finance Demo app
-derived_roles:
+derivedRoles:
   name: common_roles
   definitions:
   - name: OWNER
