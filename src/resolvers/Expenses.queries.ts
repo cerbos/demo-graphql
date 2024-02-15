@@ -1,19 +1,16 @@
 // Copyright 2021 Zenauth Ltd.
 // SPDX-License-Identifier: Apache-2.0
 
-import { ApolloError } from "apollo-server-errors";
 import { Arg, Ctx, Mutation, Query } from "type-graphql";
 import { Inject, Service } from "typedi";
 import { IContext } from "../server/context.interface";
-import {
-  AuthorizationError,
-  CerbosService,
-} from "../services/Cerbos.service";
+import { AuthorizationError, CerbosService } from "../services/Cerbos.service";
 import { Effect, CheckResourcesResult } from "@cerbos/core";
 import { ExpensesService } from "../services/Expenses.service";
 import Expense from "../types/Expense.type";
 
 import logger from "../utils/logger";
+import { GraphQLError } from "graphql";
 
 const log = logger("ExpensesQueries");
 
@@ -52,10 +49,9 @@ class ExpensesQueries {
       })
     );
 
-
-
     return expenses.filter(
-      (_, i) => (authorized[i] as CheckResourcesResult).actions[action] === Effect.ALLOW
+      (_, i) =>
+        (authorized[i] as CheckResourcesResult).actions[action] === Effect.ALLOW
     );
   }
 
@@ -66,7 +62,7 @@ class ExpensesQueries {
   ): Promise<Expense> {
     // Get the expense by ID
     const expense = await this.expensesService.get(id);
-    if (!expense) throw new ApolloError("Expense not found");
+    if (!expense) throw new GraphQLError("Expense not found");
     // This will authorize the user against cerbos or else through an authorization error
 
     const authorized = await context.loaders.authorize.load({
@@ -82,7 +78,7 @@ class ExpensesQueries {
         },
       },
     });
-    console.log(authorized)
+    console.log(authorized);
     if (authorized.actions["view"] !== Effect.ALLOW)
       throw new AuthorizationError("Access denied");
     // Return the invoice
@@ -96,7 +92,7 @@ class ExpensesQueries {
   ): Promise<boolean> {
     // Get the invoice by ID
     const expense = await this.expensesService.get(id);
-    if (!expense) throw new ApolloError("Expense not found");
+    if (!expense) throw new GraphQLError("Expense not found");
     // This will authorize the user against cerbos or else through an authorization error
 
     const authorized = await context.loaders.authorize.load({

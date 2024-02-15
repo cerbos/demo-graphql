@@ -1,13 +1,17 @@
 // Copyright 2021 Zenauth Ltd.
 // SPDX-License-Identifier: Apache-2.0
 
-import { ExpressContext } from "apollo-server-express";
 import express from "express";
 import { config } from "node-config-ts";
 import "reflect-metadata";
 import createContext from "./server/create-context";
 import { createGQLServer } from "./server/graphql-server";
 import logger from "./utils/logger";
+import cors from "cors";
+import {
+  ExpressContextFunctionArgument,
+  expressMiddleware,
+} from "@apollo/server/express4";
 
 //ENABLE GLOBAL
 const startTime = new Date();
@@ -15,31 +19,40 @@ const log = logger("demo-grapql");
 log.info(`start ENV: ${process.env.NODE_ENV}`);
 const port = config.port || 8000;
 
-async function init() {
-  const createContextFn = (request: ExpressContext) => createContext(request);
-  const gqlServer = await createGQLServer(createContextFn);
-  const app = express();
+const app = express();
 
-  app.get("/", (req, res) => {
+async function init() {
+  const createContextFn = (request: ExpressContextFunctionArgument) =>
+    createContext(request);
+  const gqlServer = await createGQLServer();
+
+  app.get("/", (_, res) => {
     res.send("demo-server");
   });
 
   app.get("/status", async (_, res) => {
-    const meta = {
+    res.json({
       port: port,
       env: process.env.NODE_ENV,
       startedAt: startTime,
       node: process.env.NODE_NAME,
       pod: process.env.POD_NAME,
-    };
-    res.json(meta);
+      config,
+    });
   });
 
-  //Apply the GQL Server
-  gqlServer.applyMiddleware({ app, path: "/graphql" });
+  await gqlServer.start();
+  app.use(
+    "/graphql",
+    cors<cors.CorsRequest>(),
+    express.json(),
+    expressMiddleware(gqlServer, {
+      context: createContextFn,
+    })
+  );
 
-  // Start the server
-  app.listen(port, () => log.info(`Listening on port ${port}`));
+  app.listen(port);
+
   console.log(`Server is running
   STARTED: ${new Date()}
   ENV: ${process.env.NODE_ENV}
