@@ -11,7 +11,7 @@ RUN npm run build
 RUN npm prune --omit=dev --no-audit --ignore-engines
 
 FROM node:22-slim AS final
-LABEL org.opencontainers.image.source https://github.com/cerbos/demo-graphql
+LABEL org.opencontainers.image.source="https://github.com/cerbos/demo-graphql"
 ENV NODE_ENV=production
 WORKDIR /usr/src/app
 COPY --from=base /usr/src/app/node_modules node_modules
