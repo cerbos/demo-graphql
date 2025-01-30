@@ -1,14 +1,15 @@
 // Copyright 2021 Zenauth Ltd.
 // SPDX-License-Identifier: Apache-2.0
 
-import { config } from "node-config-ts";
-import { Service } from "typedi";
-
+import {
+  CheckResourcesResult,
+  Principal,
+  Resource,
+  ResourceCheck,
+} from "@cerbos/core";
 import { GRPC as Cerbos } from "@cerbos/grpc";
-import logger from "../utils/logger";
+import DataLoader from "dataloader";
 import { GraphQLError } from "graphql";
-
-const log = logger("CerbosService");
 
 export class AuthorizationError extends GraphQLError {
   constructor(message: string) {
@@ -21,10 +22,36 @@ export class AuthorizationError extends GraphQLError {
   }
 }
 
-@Service({ global: true })
-export class CerbosService {
-  public cerbos: Cerbos;
-  constructor() {
-    this.cerbos = new Cerbos(config.cerbos.host, { tls: config.cerbos.tls });
-  }
+const cerbos = new Cerbos(process.env.CERBOS_GRPC || "localhost:3593", {
+  tls: false,
+});
+
+export function authorize(principal: Principal) {
+  const loader = new DataLoader(async (resources: readonly ResourceCheck[]) => {
+    const results = await cerbos.checkResources({
+      principal,
+      resources: resources as ResourceCheck[],
+    });
+    return resources.map(
+      (key) =>
+        results.findResult({
+          kind: key.resource.kind,
+          id: key.resource.id,
+        }) as CheckResourcesResult
+    );
+  });
+
+  return {
+    async checkResource(resource: Resource, action: string) {
+      const result = await loader.load({
+        resource: {
+          kind: resource.kind,
+          id: resource.id,
+          attr: resource.attr,
+        },
+        actions: [action],
+      });
+      return result.isAllowed(action);
+    },
+  };
 }

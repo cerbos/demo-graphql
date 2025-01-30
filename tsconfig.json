@@ -1,21 +1,13 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "esModuleInterop": true,
-    "target": "es6",
+    "rootDirs": ["src"],
+    "outDir": "dist",
+    "lib": ["es2020"],
+    "target": "es2020",
+    "module": "esnext",
     "moduleResolution": "node",
-    "noUnusedLocals": false,
-    "outDir": "build",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "skipLibCheck": true
+    "esModuleInterop": true,
+    "types": ["node"]
   },
-  "include": [
-    "src",
-    "config"
-  ],
-  "exclude": [
-    "node_modules",
-    "**/*.spec.ts"
-  ]
+  "exclude": ["codegen.ts"]
 }

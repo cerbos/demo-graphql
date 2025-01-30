@@ -1,16 +1,9 @@
 // Copyright 2021 Zenauth Ltd.
 // SPDX-License-Identifier: Apache-2.0
 
-import Expense from "../types/Expense.type";
+import { Expense, ExpenseStatus, Region } from "../generated/graphql";
 import { companyById } from "./companies.data";
-import { Region } from "./regions.data";
 import { userById } from "./users.data";
-
-export enum ExpenseStatus {
-  OPEN = "OPEN",
-  APPROVED = "APPROVED",
-  REJECTED = "REJECTED",
-}
 
 export const Expenses: Expense[] = [
   {
@@ -18,18 +11,18 @@ export const Expenses: Expense[] = [
     createdAt: new Date("2021-10-01"),
     createdBy: userById("user3"),
     vendor: companyById("company2"),
-    region: Region.EMEA,
+    region: Region.Emea,
     amount: 2421.12,
-    status: ExpenseStatus.OPEN,
+    status: ExpenseStatus.Open,
   },
   {
     id: "expense2",
     createdAt: new Date("2021-10-01"),
     createdBy: userById("user3"),
     vendor: companyById("company3"),
-    region: Region.EMEA,
+    region: Region.Emea,
     amount: 513.5,
-    status: ExpenseStatus.APPROVED,
+    status: ExpenseStatus.Approved,
     approvedBy: userById("user2"),
   },
 ];
