@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://api.cerbos.dev/latest/cerbos/policy/v1/Policy.schema.json
 ---
 apiVersion: api.cerbos.dev/v1
 description: |-
@@ -5,18 +6,18 @@ description: |-
 derivedRoles:
   name: common_roles
   definitions:
-  - name: OWNER
-    parentRoles: ["USER"]
-    condition:
-      match:
-        expr: request.resource.attr.ownerId == request.principal.id
-  - name: FINANCE
-    parentRoles: ["USER"]
-    condition:
-      match:
-        expr: request.principal.attr.department == "FINANCE"
-  - name: REGION_MANAGER
-    parentRoles: ["MANAGER"]
-    condition:
-      match:
-        expr: request.resource.attr.region == request.principal.attr.region
+    - name: OWNER
+      parentRoles: ["USER"]
+      condition:
+        match:
+          expr: request.resource.attr.ownerId == request.principal.id
+    - name: FINANCE
+      parentRoles: ["USER"]
+      condition:
+        match:
+          expr: request.principal.attr.department == "FINANCE"
+    - name: REGION_MANAGER
+      parentRoles: ["MANAGER"]
+      condition:
+        match:
+          expr: request.resource.attr.region == request.principal.attr.region

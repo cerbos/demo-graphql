@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://api.cerbos.dev/latest/cerbos/policy/v1/Policy.schema.json
 ---
 apiVersion: api.cerbos.dev/v1
 resourcePolicy:
@@ -6,22 +7,22 @@ resourcePolicy:
     - common_roles
   resource: "expense:object"
   rules:
-    - actions: ['*']
+    - actions: ["*"]
       effect: EFFECT_ALLOW
       roles:
         - ADMIN
-    - actions: ['view']
+    - actions: ["view"]
       effect: EFFECT_ALLOW
       derivedRoles:
         - OWNER
         - FINANCE
         - REGION_MANAGER
-    - actions: ['view:approver']
+    - actions: ["view:approver"]
       effect: EFFECT_ALLOW
       derivedRoles:
         - OWNER
         - FINANCE
-    - actions: ['approve']
+    - actions: ["approve"]
       effect: EFFECT_ALLOW
       derivedRoles:
         - FINANCE

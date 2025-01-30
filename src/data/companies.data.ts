@@ -1,24 +1,23 @@
 // Copyright 2021 Zenauth Ltd.
 // SPDX-License-Identifier: Apache-2.0
 
-import Company from "../types/Company.type";
-import { Region } from "./regions.data";
+import { Company, Region } from "../generated/graphql";
 
 export const Companies: Company[] = [
   {
     id: "company1",
     name: "Candor Corp",
-    region: Region.EMEA,
+    region: Region.Emea,
   },
   {
     id: "company2",
     name: "Flux Water Gear",
-    region: Region.NA,
+    region: Region.Na,
   },
   {
     id: "company3",
     name: "Vortex Solar",
-    region: Region.NA,
+    region: Region.Na,
   },
 ];
 

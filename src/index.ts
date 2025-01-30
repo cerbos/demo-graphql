@@ -1,51 +1,50 @@
-// Copyright 2021 Zenauth Ltd.
-// SPDX-License-Identifier: Apache-2.0
+import { ApolloServer } from "@apollo/server";
+import { startStandaloneServer } from "@apollo/server/standalone";
+import { Principal } from "@cerbos/core";
+import { Users } from "./data/users.data";
+import { readFileSync } from "fs";
+import { resolvers } from "./resolvers/resolvers";
+import { GraphQLError } from "graphql";
+import { authorize } from "./services/Cerbos.service";
 
-import express from "express";
-import "reflect-metadata";
-import createContext from "./server/create-context";
-import { createGQLServer } from "./server/graphql-server";
-import logger from "./utils/logger";
-import cors from "cors";
-import {
-  ExpressContextFunctionArgument,
-  expressMiddleware,
-} from "@apollo/server/dist/esm/express4";
+const typeDefs = readFileSync("./schema.graphql", { encoding: "utf-8" });
 
-//ENABLE GLOBAL
-const startTime = new Date();
-const log = logger("demo-grapql");
-log.info(`start ENV: ${process.env.NODE_ENV}`);
-const port = process.env.PORT || 8000;
-
-const app = express();
-
-async function init() {
-  const gqlServer = await createGQLServer();
-  await gqlServer.start();
-
-  app.get("/", (_, res) => {
-    res.send("demo-server");
-  });
-
-  app.get("/status", async (_, res) => {
-    res.json({
-      port: port,
-      env: process.env.NODE_ENV,
-      startedAt: startTime,
-      node: process.env.NODE_NAME,
-      pod: process.env.POD_NAME,
-    });
-  });
-
-  app.use("/graphql", cors(), express.json(), expressMiddleware(gqlServer));
-
-  app.listen(port);
-
-  console.log(`Server is running
-  STARTED: ${new Date()}
-  ENV: ${process.env.NODE_ENV}
-  PORT: ${port}`);
+export interface Context {
+  principal: Principal;
+  authorizer: ReturnType<typeof authorize>;
 }
 
-init().catch(console.error);
+const server = new ApolloServer<Context>({
+  typeDefs,
+  resolvers,
+  introspection: true,
+});
+
+async function bootstrap() {
+  const { url } = await startStandaloneServer(server, {
+    context: async ({ req }) => {
+      const token = (req.headers.token as string) || "key:sajit:it";
+      if (!token)
+        throw new GraphQLError("User is not authenticated", {
+          extensions: {
+            code: "UNAUTHENTICATED",
+            http: { status: 401 },
+          },
+        });
+      return {
+        principal: Users[token],
+        authorizer: authorize(Users[token]),
+      };
+    },
+    listen: {
+      port: parseInt(process.env.PORT) || 4000,
+    },
+  });
+
+  console.log(`🚀 Server listening at: ${url}`);
+}
+
+bootstrap().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});

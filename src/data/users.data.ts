@@ -1,9 +1,8 @@
 // Copyright 2021 Zenauth Ltd.
 // SPDX-License-Identifier: Apache-2.0
 
-import User from "../types/User.type";
-import { Departments } from "./departments.data";
-import { Region } from "./regions.data";
+import { Principal } from "@cerbos/core";
+import { Department, Region, User } from "../generated/graphql";
 
 export enum UserRole {
   ADMIN = "ADMIN",
@@ -11,56 +10,72 @@ export enum UserRole {
   MANAGER = "MANAGER",
 }
 
-export const Users: User[] = [
-  {
+export const Users: Record<string, Principal> = {
+  "key:sajit:it": {
     id: "user1",
-    name: "Sajit P",
-    role: UserRole.ADMIN,
-    department: Departments.IT,
-    token: "key:sajit:it",
+    roles: [UserRole.ADMIN],
+    attr: {
+      name: "Sajit P",
+      department: Department.It,
+    },
   },
-  {
+  "key:joe:finance": {
     id: "user2",
-    name: "Joe Clark",
-    role: UserRole.USER,
-    department: Departments.FINANCE,
-    token: "key:joe:finance",
-    region: Region.EMEA,
+    roles: [UserRole.USER],
+    attr: {
+      name: "Joe Clark",
+      department: Department.Finance,
+      region: Region.Emea,
+    },
   },
-  {
+  "key:sally:sales": {
     id: "user3",
-    name: "Sally Sales",
-    role: UserRole.USER,
-    department: Departments.SALES,
-    token: "key:sally:sales",
-    region: Region.EMEA,
+    roles: [UserRole.USER],
+    attr: {
+      name: "Sally Sales",
+      department: Department.Finance,
+      region: Region.Emea,
+    },
   },
-  {
+  "key:brock:manager-na": {
     id: "user4",
-    name: "Brock Jackman",
-    role: UserRole.MANAGER,
-    department: Departments.SALES,
-    token: "key:brock:manager-na",
-    region: Region.NA,
+    roles: [UserRole.MANAGER],
+    attr: {
+      name: "Brock Jackman",
+      department: Department.Sales,
+      region: Region.Na,
+    },
   },
-  {
+  "key:john:manager-emea": {
     id: "user5",
-    name: "John Smith",
-    role: UserRole.MANAGER,
-    department: Departments.SALES,
-    token: "key:john:manager-emea",
-    region: Region.EMEA,
+    roles: [UserRole.MANAGER],
+    attr: {
+      name: "John Smith",
+      department: Department.Sales,
+      region: Region.Emea,
+    },
   },
-  {
+  "key:zeena:sales": {
     id: "user6",
-    name: "Zeena",
-    role: UserRole.USER,
-    department: Departments.SALES,
-    token: "key:zeena:sales",
-    region: Region.NA,
+    roles: [UserRole.USER],
+    attr: {
+      name: "Zeena",
+      department: Department.Sales,
+      region: Region.Emea,
+    },
   },
-];
-
-export const userById = (id: string): User => {
-  return Users.find((c) => c.id === id);
 };
+
+export function userById(id: string): User {
+  const principal = Object.values(Users).find((u) => u.id === id);
+  if (!principal) {
+    throw new Error(`User with id ${id} not found`);
+  }
+  const user = {
+    id: principal.id,
+    name: principal.attr.name as string,
+    department: principal.attr.department as Department,
+    region: principal.attr.region as Region,
+  };
+  return user;
+}
