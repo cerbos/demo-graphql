@@ -14,16 +14,19 @@ export const createContext: ContextFunction<
   [StandaloneServerContextFunctionArgument],
   Context
 > = async ({ req }) => {
-  const token = (req.headers.token as string) || "key:sajit:it";
-  if (!token)
+  const token = (req.headers.token as string) || "";
+  const principal = Users[token];
+  if (!token || !principal) {
     throw new GraphQLError("User is not authenticated", {
       extensions: {
         code: "UNAUTHENTICATED",
         http: { status: 401 },
       },
     });
+  }
+
   return {
-    principal: Users[token],
-    authorizer: authorize(Users[token]),
+    principal,
+    authorizer: authorize(principal),
   };
 };

@@ -32,6 +32,8 @@ Once running, you can access GraphQL Playground [http://localhost:4000/](http://
 
 To run these you need to set an HTTP header called `token` which identifies the user (and thus there permissions)
 
+![alt text](image.png)
+
 Some exampe tokens:
 
 - `key:sajit:it` is an IT Admin
