@@ -43,11 +43,3 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ghcr.io/cerbos/demo-graphql:${{ steps.vars.outputs.tag }}
-
-      - name: Build and push cerbos
-        uses: docker/build-push-action@v6
-        with:
-          context: ./cerbos
-          platforms: linux/amd64,linux/arm64
-          push: true
-          tags: ghcr.io/cerbos/demo-graphql-cerbos:${{ steps.vars.outputs.tag }}
