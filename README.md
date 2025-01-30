@@ -2,7 +2,7 @@
 
 This project showcases using Cerbos inside of a GraphQL server.
 
-To enable batching of requests, the authorization calls are performed via a [dataloader](https://github.com/graphql/dataloader) instance which is configured per-request in the [GraphQL server context](/src/context.ts) and automatically adds in the principal information from the request.
+To enable batching of requests, the authorization calls are performed via a [dataloader](https://github.com/graphql/dataloader) instance which is configured per request in the [GraphQL server context](/src/context.ts) and automatically adds in the principal information from the request.
 
 ## Setup
 
@@ -13,7 +13,7 @@ To enable batching of requests, the authorization calls are performed via a [dat
 
 To boot the GraphQL server and Cerbos instance run `npm run start`
 
-Once running, you can access GraphQL Playground [http://localhost:4000/](http://localhost:4000/). You will need to set a token (as per below) as a request header for the schema introspection to work.
+Once running, you can access GraphQL Playground [http://localhost:4000/](http://localhost:4000/). You must set a token (as per below) as a request header for the schema introspection to work.
 
 ## Policies
 
@@ -30,18 +30,18 @@ Once running, you can access GraphQL Playground [http://localhost:4000/](http://
 
 ## Sample Queries
 
-To run these you need to set an HTTP header called `token` which identifies the user (and thus there permissions)
+To run these you need to set an HTTP header called `token` which identifies the user (and thus their permissions)
 
-![alt text](image.png)
+![Setting token](auth.png)
 
 Some exampe tokens:
 
 - `key:sajit:it` is an IT Admin
 - `key:joe:finance` is an EMEA Finance person
-- `key:sally:sales` is an EMEA Sales person
+- `key:sally:sales` is an EMEA Salesperson
 - `key:zeena:sales` is an North America sales person
 - `key:john:manager-emea` is an EMEA Manager in sales
-- `key:brock:manager-na` is an North America Manager in sales
+- `key:brock:manager-na` is a North America Manager in sales
 
 ### Get an Expense
 
