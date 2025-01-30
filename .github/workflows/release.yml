@@ -43,3 +43,8 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ghcr.io/cerbos/demo-graphql:${{ steps.vars.outputs.tag }}
+
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          make_latest: true
