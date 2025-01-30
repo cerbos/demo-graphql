@@ -8,9 +8,7 @@ import {
   ResolverInterface,
   Root,
 } from "type-graphql";
-import { Inject, Service } from "typedi";
 import { IContext } from "../server/context.interface";
-import { CerbosService } from "../services/Cerbos.service";
 import { Effect } from "@cerbos/core";
 import Expense from "../types/Expense.type";
 import User from "../types/User.type";
@@ -19,12 +17,8 @@ import logger from "../utils/logger";
 
 const log = logger("ExpensesResolver");
 
-@Service()
-@Resolver((of) => Expense)
+@Resolver((_of) => Expense)
 class ExpensesResolver implements ResolverInterface<Expense> {
-  @Inject(() => CerbosService)
-  private cerbos: CerbosService;
-
   @FieldResolver()
   async approvedBy(
     @Root() expense: Expense,

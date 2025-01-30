@@ -2,7 +2,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import express from "express";
-import { config } from "node-config-ts";
 import "reflect-metadata";
 import createContext from "./server/create-context";
 import { createGQLServer } from "./server/graphql-server";
@@ -11,20 +10,19 @@ import cors from "cors";
 import {
   ExpressContextFunctionArgument,
   expressMiddleware,
-} from "@apollo/server/express4";
+} from "@apollo/server/dist/esm/express4";
 
 //ENABLE GLOBAL
 const startTime = new Date();
 const log = logger("demo-grapql");
 log.info(`start ENV: ${process.env.NODE_ENV}`);
-const port = config.port || 8000;
+const port = process.env.PORT || 8000;
 
 const app = express();
 
 async function init() {
-  const createContextFn = (request: ExpressContextFunctionArgument) =>
-    createContext(request);
   const gqlServer = await createGQLServer();
+  await gqlServer.start();
 
   app.get("/", (_, res) => {
     res.send("demo-server");
@@ -37,19 +35,10 @@ async function init() {
       startedAt: startTime,
       node: process.env.NODE_NAME,
       pod: process.env.POD_NAME,
-      config,
     });
   });
 
-  await gqlServer.start();
-  app.use(
-    "/graphql",
-    cors<cors.CorsRequest>(),
-    express.json(),
-    expressMiddleware(gqlServer, {
-      context: createContextFn,
-    })
-  );
+  app.use("/graphql", cors(), express.json(), expressMiddleware(gqlServer));
 
   app.listen(port);
 

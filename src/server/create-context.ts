@@ -6,16 +6,18 @@ import DataLoader from "dataloader";
 import Container from "typedi";
 import { Users } from "../data/users.data";
 import { CerbosService } from "../services/Cerbos.service";
-import { ResourceCheck } from "@cerbos/core";
+import { CheckResourcesResult, ResourceCheck } from "@cerbos/core";
 import logger from "../utils/logger";
 import { IContext } from "./context.interface";
 import { GraphQLError } from "graphql";
+import { ContextFunction } from "@apollo/server";
 
 const log = logger("createContext");
 
-export default async (
-  request: ExpressContextFunctionArgument
-): Promise<IContext> => {
+const createContext: ContextFunction<
+  [ExpressContextFunctionArgument],
+  IContext
+> = async (request: ExpressContextFunctionArgument) => {
   // Create a new request container
   const requestId = Math.floor(
     Math.random() * Number.MAX_SAFE_INTEGER
@@ -40,17 +42,21 @@ export default async (
     user,
     container: Container.of(requestId.toString()),
     loaders: {
-      authorize: new DataLoader(async (resources: ResourceCheck[]) => {
+      authorize: new DataLoader(async (resources: readonly ResourceCheck[]) => {
         const results = await cerbosService.cerbos.checkResources({
           principal: {
             id: user.id,
             roles: [user.role.toString()],
             attributes: JSON.parse(JSON.stringify(user)),
           },
-          resources,
+          resources: resources as ResourceCheck[],
         });
-        return resources.map((key) =>
-          results.findResult({ kind: key.resource.kind, id: key.resource.id })
+        return resources.map(
+          (key) =>
+            results.findResult({
+              kind: key.resource.kind,
+              id: key.resource.id,
+            }) as CheckResourcesResult
         );
       }),
     },
@@ -59,3 +65,5 @@ export default async (
 
   return context;
 };
+
+export default createContext;

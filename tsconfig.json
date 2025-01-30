@@ -1,21 +1,29 @@
 {
   "compilerOptions": {
+    "target": "es2021",
     "module": "commonjs",
-    "esModuleInterop": true,
-    "target": "es6",
+    "declaration": false,
+    "sourceMap": false,
+    "outDir": "./build",
     "moduleResolution": "node",
-    "noUnusedLocals": false,
-    "outDir": "build",
-    "emitDecoratorMetadata": true,
+    "removeComments": true,
+    "importHelpers": true,
+    "strict": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
     "experimentalDecorators": true,
-    "skipLibCheck": true
+    "emitDecoratorMetadata": false,
+    "resolveJsonModule": true
   },
-  "include": [
-    "src",
-    "config"
-  ],
-  "exclude": [
-    "node_modules",
-    "**/*.spec.ts"
-  ]
+  "include": ["src"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
 }

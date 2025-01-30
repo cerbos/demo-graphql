@@ -26,7 +26,7 @@ class ExpensesQueries {
     log.info("created");
   }
 
-  @Query((returns) => [Expense])
+  @Query((_returns) => [Expense])
   async expenses(@Ctx() context: IContext): Promise<Expense[]> {
     const expenses = await this.expensesService.list();
     const action = "view";
@@ -55,7 +55,7 @@ class ExpensesQueries {
     );
   }
 
-  @Query((returns) => Expense)
+  @Query((_returns) => Expense)
   async expense(
     @Arg("id") id: string,
     @Ctx() context: IContext
@@ -78,14 +78,14 @@ class ExpensesQueries {
         },
       },
     });
-    console.log(authorized);
+    log.info(authorized);
     if (authorized.actions["view"] !== Effect.ALLOW)
       throw new AuthorizationError("Access denied");
     // Return the invoice
     return expense;
   }
 
-  @Mutation((returns) => Boolean)
+  @Mutation((_returns) => Boolean)
   async approveExpense(
     @Arg("id") id: string,
     @Ctx() context: IContext

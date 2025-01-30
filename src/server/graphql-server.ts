@@ -1,18 +1,15 @@
 // Copyright 2021 Zenauth Ltd.
 // SPDX-License-Identifier: Apache-2.0
 
-import { config } from "node-config-ts";
-import { buildSchema, registerEnumType, ResolverData } from "type-graphql";
-import Container, { ContainerInstance } from "typedi";
-import { Departments } from "../data/departments.data";
+import { buildSchema, registerEnumType } from "type-graphql";
 import { UserRole } from "../data/users.data";
-
 import logger from "../utils/logger";
 import { authChecker } from "./auth-checker";
 import { IContext } from "./context.interface";
 import ExpensesResolver from "../resolvers/Expense.resolver";
 import ExpensesQueries from "../resolvers/Expenses.queries";
 import { ApolloServer } from "@apollo/server";
+import { Departments } from "../data/departments.data.js";
 
 const log = logger("ApolloServer");
 
@@ -34,7 +31,6 @@ export async function createGQLServer(): Promise<ApolloServer<IContext>> {
     registerEnums();
     const schema = await buildSchema({
       resolvers: [ExpensesResolver, ExpensesQueries],
-      container: ({ context }: ResolverData<IContext>) => context.container,
       authChecker: authChecker,
     });
 
@@ -42,32 +38,14 @@ export async function createGQLServer(): Promise<ApolloServer<IContext>> {
 
     const server = new ApolloServer<IContext>({
       schema,
-      introspection: config.graphql.introspection,
+      introspection: process.env.GRAPHQL_INTROSPECTION === "true",
       logger: log,
-      plugins: [
-        {
-          requestDidStart: async () => ({
-            async willSendResponse(requestContext) {
-              // Dispose the scoped container to prevent memory leaks
-              Container.reset(requestContext.contextValue.requestId.toString());
-
-              // For developers curiosity purpose, here is the logging of current scoped container instances
-              // Make multiple parallel requests to see in console how this works
-              const instancesIds = ((Container as any)
-                .instances as ContainerInstance[]).map(
-                (instance) => instance.id
-              );
-              console.log("Instances left in memory: ", instancesIds);
-            },
-          }),
-        },
-      ],
     });
 
     log.info("GraphQL server created");
     return server;
   } catch (e) {
     log.error("GraphQL server failed");
-    console.error(e);
+    throw e;
   }
 }

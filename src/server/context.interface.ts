@@ -6,8 +6,9 @@ import DataLoader from "dataloader";
 import { ResourceCheck, CheckResourcesResult } from "@cerbos/core";
 import User from "../types/User.type";
 import { ContainerInstance } from "typedi";
+import { BaseContext } from "@apollo/server";
 
-export interface IContext {
+export interface IContext extends BaseContext {
   req: ExpressContextFunctionArgument["req"];
   requestId: string;
   container: ContainerInstance;

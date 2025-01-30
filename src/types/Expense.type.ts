@@ -1,7 +1,7 @@
 // Copyright 2021 Zenauth Ltd.
 // SPDX-License-Identifier: Apache-2.0
 
-import { Field, ObjectType } from "type-graphql";
+import { Field, ID, ObjectType } from "type-graphql";
 import { ExpenseStatus } from "../data/expenses.data";
 
 import { Region } from "../data/regions.data";
@@ -10,26 +10,26 @@ import User from "./User.type";
 
 @ObjectType()
 export default class Expense {
-  @Field()
-  id: string;
+  @Field((_type) => ID)
+  id!: string;
 
   @Field()
-  createdAt: Date;
+  createdAt!: Date;
 
   @Field(() => User)
-  createdBy: User;
+  createdBy!: User;
 
   @Field()
-  amount: number;
+  amount!: number;
 
   @Field()
-  status: ExpenseStatus;
+  status!: ExpenseStatus;
 
   @Field(() => Company)
-  vendor: Company
+  vendor!: Company;
 
   @Field()
-  region: Region;
+  region!: Region;
 
   @Field(() => User, { nullable: true })
   approvedBy?: User;
