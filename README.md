@@ -1,58 +1,19 @@
 # Demo GraphQL
 
-This project showcases using Cerbos inside of a GraphQL server. The server is written in typescript and makes used of [type-graphql](https://typegraphql.com/) to create the schema and resolvers and [TypeDI](https://github.com/typestack/typedi) to handle dependency injection.
+This project showcases using Cerbos inside of a GraphQL server.
 
-The Cerbos client is setup as a [global service](/src/services/Cerbos.service.ts) which is then used in the GraphQL server.
-
-To enable batching of requests, the authorization calls are performed via a [dataloader](https://github.com/graphql/dataloader) instance which is configured per-request in the [GraphQL server context](/src/server/create-context.ts) and automatically adds in the principal information from the request.
-
-```ts
-new DataLoader(async (resources: ResourceCheck[]) => {
-  const results = await cerbosService.cerbos.checkResources({
-    principal: {
-      id: user.id,
-      roles: [user.role.toString()],
-      attributes: JSON.parse(JSON.stringify(user)),
-    },
-    resources,
-  });
-  return resources.map((key) =>
-    results.findResult({ kind: key.resource.kind, id: key.resource.id })
-  );
-});
-```
-
-Inside the GraphQL resolvers, calls to Cerbos can be done via using the context:
-
-```ts
-const authorized = await context.loaders.authorize.load({
-  actions: ["view:approver"],
-  resource: {
-    id: expense.id,
-    kind: "expense:object",
-    attributes: {
-      id: expense.id,
-      region: expense.region,
-      status: expense.status,
-      ownerId: expense.createdBy.id,
-    },
-  },
-});
-```
+To enable batching of requests, the authorization calls are performed via a [dataloader](https://github.com/graphql/dataloader) instance which is configured per-request in the [GraphQL server context](/src/context.ts) and automatically adds in the principal information from the request.
 
 ## Setup
 
-- Have Node v18+ on your machine (recommend using NVM)
-- Ensure your Docker is setup to pull `ghcr.io/cerbos/cerbos:latest`
+- Have Node v22+ on your machine (recommend using NVM)
 - Run `npm install` to get the node dependencies.
 
 ## Running
 
-Cerbos is running separately in a docker container to the application and served on http://localhost:3593. To start this run `cd cerbos && ./start.sh`
+To boot the GraphQL server and Cerbos instance run `npm run start`
 
-To boot the GraphQL server run `npm run start`
-
-Once running, you can access GraphQL Playground [http://localhost:8000/graphql](http://localhost:8000/graphql)
+Once running, you can access GraphQL Playground [http://localhost:4000/](http://localhost:4000/). You will need to set a token (as per below) as a request header for the schema introspection to work.
 
 ## Policies
 
