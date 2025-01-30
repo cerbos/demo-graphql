@@ -37,7 +37,7 @@ jobs:
           password: ${{ secrets.GH_TOKEN }}        
 
       - name: Build and push
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v6
         with:
           context: .
           platforms: linux/amd64,linux/arm64
@@ -45,7 +45,7 @@ jobs:
           tags: ghcr.io/cerbos/demo-graphql:${{ steps.vars.outputs.tag }}
 
       - name: Build and push cerbos
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v6
         with:
           context: ./cerbos
           platforms: linux/amd64,linux/arm64
