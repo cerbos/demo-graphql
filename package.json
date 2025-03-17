@@ -15,7 +15,7 @@
   "dependencies": {
     "@apollo/server": "^4.11.3",
     "@cerbos/core": "^0.21.0",
-    "@cerbos/grpc": "^0.20.0",
+    "@cerbos/grpc": "^0.21.0",
     "cerbos": "^0.41.0",
     "dataloader": "^2.2.3",
     "graphql": "^16.10.0",
