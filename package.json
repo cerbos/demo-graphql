@@ -16,15 +16,15 @@
     "@apollo/server": "^4.11.3",
     "@cerbos/core": "^0.21.0",
     "@cerbos/grpc": "^0.21.0",
-    "cerbos": "^0.41.0",
+    "cerbos": "^0.42.0",
     "dataloader": "^2.2.3",
     "graphql": "^16.10.0",
     "graphql-scalars": "^1.24.1"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "5.0.5",
-    "@graphql-codegen/typescript": "4.1.5",
-    "@graphql-codegen/typescript-resolvers": "4.4.4",
+    "@graphql-codegen/typescript": "4.1.6",
+    "@graphql-codegen/typescript-resolvers": "4.5.0",
     "@types/node": "^22.12.0",
     "pkgroll": "^2.6.1",
     "tsx": "^4.19.2",
