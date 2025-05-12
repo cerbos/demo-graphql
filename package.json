@@ -22,9 +22,9 @@
     "graphql-scalars": "^1.24.1"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "5.0.5",
+    "@graphql-codegen/cli": "5.0.6",
     "@graphql-codegen/typescript": "4.1.6",
-    "@graphql-codegen/typescript-resolvers": "4.5.0",
+    "@graphql-codegen/typescript-resolvers": "4.5.1",
     "@types/node": "^22.12.0",
     "pkgroll": "^2.6.1",
     "tsx": "^4.19.2",
