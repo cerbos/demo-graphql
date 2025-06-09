@@ -14,15 +14,15 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@apollo/server": "^4.11.3",
-    "@cerbos/core": "^0.21.0",
-    "@cerbos/grpc": "^0.21.0",
-    "cerbos": "^0.43.0",
+    "@cerbos/core": "^0.22.0",
+    "@cerbos/grpc": "^0.22.0",
+    "cerbos": "^0.44.0",
     "dataloader": "^2.2.3",
     "graphql": "^16.10.0",
     "graphql-scalars": "^1.24.1"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "5.0.6",
+    "@graphql-codegen/cli": "5.0.7",
     "@graphql-codegen/typescript": "4.1.6",
     "@graphql-codegen/typescript-resolvers": "4.5.1",
     "@types/node": "^22.12.0",
