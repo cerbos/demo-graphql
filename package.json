@@ -14,7 +14,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@apollo/server": "^4.11.3",
-    "@cerbos/core": "^0.22.0",
+    "@cerbos/core": "^0.23.0",
     "@cerbos/grpc": "^0.22.0",
     "cerbos": "^0.45.0",
     "dataloader": "^2.2.3",
