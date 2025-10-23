@@ -3,21 +3,24 @@ FROM node:22-slim AS base
 
 WORKDIR /usr/src/app
 
-# Copy only package.json and package-lock.json first to leverage Docker cache
-COPY package*.json ./
+# Ensure pnpm is available via Corepack and matches package.json
+RUN corepack enable && corepack prepare pnpm@9.15.4 --activate
+
+# Copy only package and config files first to leverage Docker cache
+COPY package.json pnpm-lock.yaml ./
 COPY tsconfig*.json ./
 
 # Install dependencies
-RUN npm ci --prefer-offline --no-audit --ignore-engines
+RUN pnpm install --frozen-lockfile --prefer-offline
 
 # Copy the rest of the application code
 COPY . .
 
 # Build the application
-RUN npm run build
+RUN pnpm run build
 
 # Remove development dependencies
-RUN npm prune --omit=dev --no-audit --ignore-engines
+RUN pnpm prune --prod
 
 # Final stage
 FROM node:22-slim AS final
