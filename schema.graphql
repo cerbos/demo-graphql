@@ -1,52 +1,52 @@
 scalar DateTime
 
 enum ExpenseStatus {
-  OPEN
-  APPROVED
-  REJECTED
+	OPEN
+	APPROVED
+	REJECTED
 }
 
 enum Region {
-  EMEA
-  NA
-  APAC
+	EMEA
+	NA
+	APAC
 }
 
 enum Department {
-  SALES
-  FINANCE
-  IT
+	SALES
+	FINANCE
+	IT
 }
 
 type Expense {
-  id: ID!
-  createdAt: DateTime!
-  createdBy: User!
-  amount: Float!
-  status: ExpenseStatus!
-  vendor: Company!
-  region: Region!
-  approvedBy: User
+	id: ID!
+	createdAt: DateTime!
+	createdBy: User!
+	amount: Float!
+	status: ExpenseStatus!
+	vendor: Company!
+	region: Region!
+	approvedBy: User
 }
 
 type Company {
-  id: ID
-  name: String
-  region: Region
+	id: ID
+	name: String
+	region: Region
 }
 
 type User {
-  id: ID!
-  name: String!
-  region: Region
-  department: Department!
+	id: ID!
+	name: String!
+	region: Region
+	department: Department!
 }
 
 type Query {
-  expenses: [Expense]!
-  expense(id: ID!): Expense
+	expenses: [Expense]!
+	expense(id: ID!): Expense
 }
 
 type Mutation {
-  approveExpense(id: ID!): Expense
+	approveExpense(id: ID!): Expense
 }

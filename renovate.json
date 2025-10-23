@@ -1,22 +1,18 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "schedule:earlyMondays",
-    "config:recommended",
-    "docker:disable",
-    "group:allNonMajor",
-    ":separateMultipleMajorReleases",
-    ":gitSignOff"
-  ],
-  "automerge": true,
-  "automergeSchedule": [
-    "after 9am and before 5pm Monday"
-  ],
-  "major": {
-    "automerge": false
-  },
-  "dependencyDashboard": true,
-  "baseBranches": [
-    "main"
-  ]
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"extends": [
+		"schedule:earlyMondays",
+		"config:recommended",
+		"docker:disable",
+		"group:allNonMajor",
+		":separateMultipleMajorReleases",
+		":gitSignOff"
+	],
+	"automerge": true,
+	"automergeSchedule": ["after 9am and before 5pm Monday"],
+	"major": {
+		"automerge": false
+	},
+	"dependencyDashboard": true,
+	"baseBranches": ["main"]
 }
