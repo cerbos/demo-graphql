@@ -12,7 +12,7 @@
 	},
 	"author": "Cerbos Developers",
 	"license": "Apache-2.0",
-	"packageManager": "pnpm@10.30.2",
+	"packageManager": "pnpm@10.30.3",
 	"dependencies": {
 		"@apollo/server": "^5.0.0",
 		"@cerbos/core": "^0.28.0",
