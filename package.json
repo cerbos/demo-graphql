@@ -15,15 +15,15 @@
 	"packageManager": "pnpm@10.33.2",
 	"dependencies": {
 		"@apollo/server": "^5.0.0",
-		"@cerbos/core": "^0.28.0",
-		"@cerbos/grpc": "^0.25.0",
-		"cerbos": "^0.51.0",
+		"@cerbos/core": "^0.30.0",
+		"@cerbos/grpc": "^0.27.0",
+		"cerbos": "^0.52.0",
 		"dataloader": "^2.2.3",
 		"graphql": "^16.11.0",
 		"graphql-scalars": "^1.25.0"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.4.13",
+		"@biomejs/biome": "2.4.14",
 		"@graphql-codegen/cli": "^6.0.1",
 		"@graphql-codegen/typescript": "^5.0.2",
 		"@graphql-codegen/typescript-resolvers": "^5.1.0",
