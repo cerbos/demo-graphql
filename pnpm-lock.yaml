@@ -12,14 +12,14 @@ importers:
         specifier: ^5.0.0
         version: 5.5.0(graphql@16.13.2)
       '@cerbos/core':
-        specifier: ^0.28.0
-        version: 0.28.0(@bufbuild/protobuf@2.11.0)
+        specifier: ^0.30.0
+        version: 0.30.0(@bufbuild/protobuf@2.11.0)
       '@cerbos/grpc':
-        specifier: ^0.25.0
-        version: 0.25.0(@bufbuild/protobuf@2.11.0)(@cerbos/api@0.6.0)
+        specifier: ^0.27.0
+        version: 0.27.0(@bufbuild/protobuf@2.11.0)(@cerbos/api@0.7.0)
       cerbos:
-        specifier: ^0.51.0
-        version: 0.51.0
+        specifier: ^0.52.0
+        version: 0.52.0
       dataloader:
         specifier: ^2.2.3
         version: 2.2.3
@@ -31,8 +31,8 @@ importers:
         version: 1.25.0(graphql@16.13.2)
     devDependencies:
       '@biomejs/biome':
-        specifier: 2.4.13
-        version: 2.4.13
+        specifier: 2.4.14
+        version: 2.4.14
       '@graphql-codegen/cli':
         specifier: ^6.0.1
         version: 6.3.1(@types/node@24.12.2)(graphql@16.13.2)(typescript@5.9.3)
@@ -226,59 +226,59 @@ packages:
     resolution: {integrity: sha512-LwdZHpScM4Qz8Xw2iKSzS+cfglZzJGvofQICy7W7v4caru4EaAmyUuO6BGrbyQ2mYV11W0U8j5mBhd14dd3B0A==}
     engines: {node: '>=6.9.0'}
 
-  '@biomejs/biome@2.4.13':
-    resolution: {integrity: sha512-gLXOwkOBBg0tr7bDsqlkIh4uFeKuMjxvqsrb1Tukww1iDmHcfr4Uu8MoQxp0Rcte+69+osRNWXwHsu/zxT6XqA==}
+  '@biomejs/biome@2.4.14':
+    resolution: {integrity: sha512-TmAvxOEgrpLypzVGJ8FulIZnlyA9TxrO1hyqYrCz9r+bwma9xXxuLA5IuYnj55XQneFx460KjRbx6SWGLkg3bQ==}
     engines: {node: '>=14.21.3'}
     hasBin: true
 
-  '@biomejs/cli-darwin-arm64@2.4.13':
-    resolution: {integrity: sha512-2KImO1jhNFBa2oWConyr0x6flxbQpGKv6902uGXpYM62Xyem8U80j441SyUJ8KyngsmKbQjeIv1q2CQfDkNnYg==}
+  '@biomejs/cli-darwin-arm64@2.4.14':
+    resolution: {integrity: sha512-XvgoE9XOawUOQPdmvs4J7wPhi/DLwSCGks3AlPJDmh34O0awRTqCED1HRcRDdpf1Zrp4us4MGOOdIxNpbqNF5Q==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [darwin]
 
-  '@biomejs/cli-darwin-x64@2.4.13':
-    resolution: {integrity: sha512-BKrJklbaFN4p1Ts4kPBczo+PkbsHQg57kmJ+vON9u2t6uN5okYHaSr7h/MutPCWQgg2lglaWoSmm+zhYW+oOkg==}
+  '@biomejs/cli-darwin-x64@2.4.14':
+    resolution: {integrity: sha512-jE7hKBCFhOx3uUh+ZkWBfOHxAcILPfhFplNkuID/eZeSTLHzfZzoZxW8fbqY9xXRnPi7jGNAf1iPVR+0yWsM/Q==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [darwin]
 
-  '@biomejs/cli-linux-arm64-musl@2.4.13':
-    resolution: {integrity: sha512-U5MsuBQW25dXaYtqWWSPM3P96H6Y+fHuja3TQpMNnylocHW0tEbtFTDlUj6oM+YJLntvEkQy4grBvQNUD4+RCg==}
+  '@biomejs/cli-linux-arm64-musl@2.4.14':
+    resolution: {integrity: sha512-/z+6gqAqqUQTHazwStxSXKHg9b8UvqBmDFRp+c4wYbq2KXhELQDon9EoC9RpmQ8JWkqQx/lIUy/cs+MhzDZp6A==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [linux]
     libc: [musl]
 
-  '@biomejs/cli-linux-arm64@2.4.13':
-    resolution: {integrity: sha512-NzkUDSqfvMBrPplKgVr3aXLHZ2NEELvvF4vZxXulEylKWIGqlvNEcwUcj9OLrn75TD3lJ/GIqCVlBwd1MZCuYQ==}
+  '@biomejs/cli-linux-arm64@2.4.14':
+    resolution: {integrity: sha512-2TELhZnW5RSLL063l9rc5xLpA0ZIw0Ccwy/0q384rvNAgFw3yI76bd59547yxowdQr5MNPET/xDLrLuvgSeeWQ==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [linux]
     libc: [glibc]
 
-  '@biomejs/cli-linux-x64-musl@2.4.13':
-    resolution: {integrity: sha512-Z601MienRgTBDza/+u2CH3RSrWoXo9rtr8NK6A4KJzqGgfxx+H3VlyLgTJ4sRo40T3pIsqpTmiOQEvYzQvBRvQ==}
+  '@biomejs/cli-linux-x64-musl@2.4.14':
+    resolution: {integrity: sha512-R6BWgJdQOwW9ulJatuTVrQkjnODjqHZkKNOqb1sz++3Noe5LYd0i3PchnOBUCYAPHoPWHhjJqbdZlHEu0hpjdA==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [linux]
     libc: [musl]
 
-  '@biomejs/cli-linux-x64@2.4.13':
-    resolution: {integrity: sha512-Az3ZZedYRBo9EQzNnD9SxFcR1G5QsGo6VEc2hIyVPZ1rdKwee/7E9oeBBZFpE8Z44ekxsDQBqbiWGW5ShOhUSQ==}
+  '@biomejs/cli-linux-x64@2.4.14':
+    resolution: {integrity: sha512-zHrlQZDBDUz4OLAraYpWKcnLS6HOewBFWYOzY91d1ZjdqZwibOyb6BEu6WuWLugyo0P3riCmsbV9UqV1cSXwQg==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [linux]
     libc: [glibc]
 
-  '@biomejs/cli-win32-arm64@2.4.13':
-    resolution: {integrity: sha512-Px9PS2B5/Q183bUwy/5VHqp3J2lzdOCeVGzMpphYfl8oSa7VDCqenBdqWpy6DCy/en4Rbf/Y1RieZF6dJPcc9A==}
+  '@biomejs/cli-win32-arm64@2.4.14':
+    resolution: {integrity: sha512-M3EH5hqOI/F/FUA2u4xcLoUgmxd218mvuj/6JL7Hv2toQvr2/AdOvKSpGkoRuWFCtQPVa+ZqkEV3Q5xBA9+XSA==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [win32]
 
-  '@biomejs/cli-win32-x64@2.4.13':
-    resolution: {integrity: sha512-tTcMkXyBrmHi9BfrD2VNHs/5rYIUKETqsBlYOvSAABwBkJhSDVb5e7wPukftsQbO3WzQkXe6kaztC6WtUOXSoQ==}
+  '@biomejs/cli-win32-x64@2.4.14':
+    resolution: {integrity: sha512-WL0EG5qE+EAKomGXbf2g6VnSKJhTL3tXC0QRzWRwA5VpjxNYa6H4P7ZWfymbGE4IhZZQi1KXQ2R0YjwInmz2fA==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [win32]
@@ -286,42 +286,42 @@ packages:
   '@bufbuild/protobuf@2.11.0':
     resolution: {integrity: sha512-sBXGT13cpmPR5BMgHE6UEEfEaShh5Ror6rfN3yEK5si7QVrtZg8LEPQb0VVhiLRUslD2yLnXtnRzG035J/mZXQ==}
 
-  '@cerbos/api@0.6.0':
-    resolution: {integrity: sha512-NgJlJPCyhKSN9pVWE6TPnbQNTbCINFFo4YQcDOsr5BqnxybsLDsh+BdDLbA7gpsYgWrhIu2tegEpJsctDvWbHg==}
+  '@cerbos/api@0.7.0':
+    resolution: {integrity: sha512-2sLJLTOvxYlUNdQSNztCMXYRsLJmE4krH02swvjnOrSMFyGZt7oGsKcSt1dUCM8ONrm4POmsnGoZ4xFcyaduVQ==}
     engines: {node: '>= 20'}
 
-  '@cerbos/cerbos-darwin-arm64@0.51.0':
-    resolution: {integrity: sha512-upxYCxtRur2b86jom1zgES3+49t24gaiyrSId9ZW5PJnCn6dHjpibaa5I7h0vvi/2caBKpERW9ySRagpEZ7pAQ==}
+  '@cerbos/cerbos-darwin-arm64@0.52.0':
+    resolution: {integrity: sha512-/aDjYSmVbLGdrMU9NtQ9DALzuZiHdmkTTBb4LzrAW1EzdfL8QcgJKFVaQ4t2ChDzet19f8r4YWratQHXpdtSVA==}
     cpu: [arm64]
     os: [darwin]
 
-  '@cerbos/cerbos-darwin-x64@0.51.0':
-    resolution: {integrity: sha512-/R9br8RrqUPR7HKN5X2UKTz+Zr7G4rSwPiiOJifUotMqtVN7DudhcTycKg+lx8+XhGpV2r4SkgAhfclGXlDLQA==}
+  '@cerbos/cerbos-darwin-x64@0.52.0':
+    resolution: {integrity: sha512-EQswy3VYttkpD21keEiu4ohLtzW03b+4SnBtOV0LiuVVGVggrlIidIst7bGZON3l2pRdN3x/M21lk2O4MrH6sA==}
     cpu: [x64]
     os: [darwin]
 
-  '@cerbos/cerbos-linux-arm64@0.51.0':
-    resolution: {integrity: sha512-oFAF0nphRrzkvQ9N5MIC/PwQHmiB+licj82Lu0X4ZQpQFPaC8Cin17Vk0YXCtGDuogCEs2tJPvO6EvM9WNuMHw==}
+  '@cerbos/cerbos-linux-arm64@0.52.0':
+    resolution: {integrity: sha512-ZEtRC0kUBHUVILWzWJlo3dYp6xmOhFjhmv8GoplaRK9fF5c3bJRnwCLOM+Hr9+QQxTtgjKJKYybM1Bjhrss7xA==}
     cpu: [arm64]
     os: [linux]
 
-  '@cerbos/cerbos-linux-x64@0.51.0':
-    resolution: {integrity: sha512-LYxcSk2qTygEinl6r6X0TeQmFfDKLiS9TWkS4ugJMI59JfrVmJN/mHPs1G7mGa2DGYjGmU1rsFzCYVUS7oh3iQ==}
+  '@cerbos/cerbos-linux-x64@0.52.0':
+    resolution: {integrity: sha512-NVxALx1r/xvlHD7dFVzP2TcuFMLkwvbeajTsv1ZEZyihkPHBtIC7+d7kmtlZfsYXyvYOdDktoDM4Pd90qv9Biw==}
     cpu: [x64]
     os: [linux]
 
-  '@cerbos/core@0.28.0':
-    resolution: {integrity: sha512-7UeTOxHL1VbH3aMlbiK1TwY9HgvIUAK/fYWS3s9bo77MZafbRjKTHpe85J0WRzCyVkNKg2MulwAafK0KSttzHA==}
+  '@cerbos/core@0.30.0':
+    resolution: {integrity: sha512-XCTVxc9sTM5FBUVYZpWNTBoKD9UALGp15XZ5xd2idMOMrpWcwsyuj04EHKsPPp643BZ1yYVDANSJZxP+3o2bxQ==}
     engines: {node: '>= 20'}
     peerDependencies:
       '@bufbuild/protobuf': ^2.11.0
 
-  '@cerbos/grpc@0.25.0':
-    resolution: {integrity: sha512-z1qeZjwqsf6362PMoC1GVFR5EkztyVmvAs1z2U4WCFHxsg2OAKOkpo9qKvK1WUx1urrlY4dyhQRX0wX8c2ANqw==}
+  '@cerbos/grpc@0.27.0':
+    resolution: {integrity: sha512-6nQwSPahVvYKQQeLW7uhPZIs8n/UCcro/PWmb6OlCdoLevLFEradPaDxc/1ZMLa9LVgAXJrLt2FbwhqkLHHUNg==}
     engines: {node: '>= 20'}
     peerDependencies:
       '@bufbuild/protobuf': ^2.11.0
-      '@cerbos/api': ^0.6.0
+      '@cerbos/api': ^0.7.0
 
   '@envelop/core@5.5.1':
     resolution: {integrity: sha512-3DQg8sFskDo386TkL5j12jyRAdip/8yzK3x7YGbZBgobZ4aKXrvDU0GppU0SnmrpQnNaiTUsxBs9LKkwQ/eyvw==}
@@ -1437,8 +1437,8 @@ packages:
   capital-case@1.0.4:
     resolution: {integrity: sha512-ds37W8CytHgwnhGGTi88pcPyR15qoNkOpYwmMMfnWqqWgESapLqvDx6huFjQ5vqWSn2Z06173XNA7LtMOeUh1A==}
 
-  cerbos@0.51.0:
-    resolution: {integrity: sha512-nY0f8hs9y3AuvI7nRp5ZL5vt9myaf9UatVV7Im3wjrRp2YlKbFwpT2oqZSkov4+HVV2eK/QWACr4yPNBZqz7oA==}
+  cerbos@0.52.0:
+    resolution: {integrity: sha512-rB6SOv//Z3RHm4W7JfLiQZaefcp1unDpwb6lKyIrOq/hFAvrOgfISKPLewS1u73Ref+/ftPWaYAaFY/bwKUABQ==}
     hasBin: true
 
   chalk@4.1.2:
@@ -2401,8 +2401,8 @@ packages:
     resolution: {integrity: sha512-0/A9rDy9P7cJ+8w1c9WD9V//9Wj15Ce2MPz8Ri6032usz+NfePxx5AcN3bN+r6ZL6jEo066/yNYB3tn4pQEx+A==}
     hasBin: true
 
-  uuid@13.0.0:
-    resolution: {integrity: sha512-XQegIaBTVUjSHliKqcnFqYypAd4S+WCYt5NIeRs6w/UAry7z8Y9j5ZwRRL4kzq9U3sD6v+85er9FvkEaBpji2w==}
+  uuid@14.0.0:
+    resolution: {integrity: sha512-Qo+uWgilfSmAhXCMav1uYFynlQO7fMFiMVZsQqZRMIXp0O7rR7qjkj+cPvBHLgBqi960QCoo/PH2/6ZtVqKvrg==}
     hasBin: true
 
   vary@1.1.2:
@@ -2703,70 +2703,70 @@ snapshots:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.28.5
 
-  '@biomejs/biome@2.4.13':
+  '@biomejs/biome@2.4.14':
     optionalDependencies:
-      '@biomejs/cli-darwin-arm64': 2.4.13
-      '@biomejs/cli-darwin-x64': 2.4.13
-      '@biomejs/cli-linux-arm64': 2.4.13
-      '@biomejs/cli-linux-arm64-musl': 2.4.13
-      '@biomejs/cli-linux-x64': 2.4.13
-      '@biomejs/cli-linux-x64-musl': 2.4.13
-      '@biomejs/cli-win32-arm64': 2.4.13
-      '@biomejs/cli-win32-x64': 2.4.13
+      '@biomejs/cli-darwin-arm64': 2.4.14
+      '@biomejs/cli-darwin-x64': 2.4.14
+      '@biomejs/cli-linux-arm64': 2.4.14
+      '@biomejs/cli-linux-arm64-musl': 2.4.14
+      '@biomejs/cli-linux-x64': 2.4.14
+      '@biomejs/cli-linux-x64-musl': 2.4.14
+      '@biomejs/cli-win32-arm64': 2.4.14
+      '@biomejs/cli-win32-x64': 2.4.14
 
-  '@biomejs/cli-darwin-arm64@2.4.13':
+  '@biomejs/cli-darwin-arm64@2.4.14':
     optional: true
 
-  '@biomejs/cli-darwin-x64@2.4.13':
+  '@biomejs/cli-darwin-x64@2.4.14':
     optional: true
 
-  '@biomejs/cli-linux-arm64-musl@2.4.13':
+  '@biomejs/cli-linux-arm64-musl@2.4.14':
     optional: true
 
-  '@biomejs/cli-linux-arm64@2.4.13':
+  '@biomejs/cli-linux-arm64@2.4.14':
     optional: true
 
-  '@biomejs/cli-linux-x64-musl@2.4.13':
+  '@biomejs/cli-linux-x64-musl@2.4.14':
     optional: true
 
-  '@biomejs/cli-linux-x64@2.4.13':
+  '@biomejs/cli-linux-x64@2.4.14':
     optional: true
 
-  '@biomejs/cli-win32-arm64@2.4.13':
+  '@biomejs/cli-win32-arm64@2.4.14':
     optional: true
 
-  '@biomejs/cli-win32-x64@2.4.13':
+  '@biomejs/cli-win32-x64@2.4.14':
     optional: true
 
   '@bufbuild/protobuf@2.11.0': {}
 
-  '@cerbos/api@0.6.0':
+  '@cerbos/api@0.7.0':
     dependencies:
       '@bufbuild/protobuf': 2.11.0
 
-  '@cerbos/cerbos-darwin-arm64@0.51.0':
+  '@cerbos/cerbos-darwin-arm64@0.52.0':
     optional: true
 
-  '@cerbos/cerbos-darwin-x64@0.51.0':
+  '@cerbos/cerbos-darwin-x64@0.52.0':
     optional: true
 
-  '@cerbos/cerbos-linux-arm64@0.51.0':
+  '@cerbos/cerbos-linux-arm64@0.52.0':
     optional: true
 
-  '@cerbos/cerbos-linux-x64@0.51.0':
+  '@cerbos/cerbos-linux-x64@0.52.0':
     optional: true
 
-  '@cerbos/core@0.28.0(@bufbuild/protobuf@2.11.0)':
+  '@cerbos/core@0.30.0(@bufbuild/protobuf@2.11.0)':
     dependencies:
       '@bufbuild/protobuf': 2.11.0
-      '@cerbos/api': 0.6.0
-      uuid: 13.0.0
+      '@cerbos/api': 0.7.0
+      uuid: 14.0.0
 
-  '@cerbos/grpc@0.25.0(@bufbuild/protobuf@2.11.0)(@cerbos/api@0.6.0)':
+  '@cerbos/grpc@0.27.0(@bufbuild/protobuf@2.11.0)(@cerbos/api@0.7.0)':
     dependencies:
       '@bufbuild/protobuf': 2.11.0
-      '@cerbos/api': 0.6.0
-      '@cerbos/core': 0.28.0(@bufbuild/protobuf@2.11.0)
+      '@cerbos/api': 0.7.0
+      '@cerbos/core': 0.30.0(@bufbuild/protobuf@2.11.0)
       '@grpc/grpc-js': 1.14.3
 
   '@envelop/core@5.5.1':
@@ -3819,12 +3819,12 @@ snapshots:
       tslib: 2.8.1
       upper-case-first: 2.0.2
 
-  cerbos@0.51.0:
+  cerbos@0.52.0:
     optionalDependencies:
-      '@cerbos/cerbos-darwin-arm64': 0.51.0
-      '@cerbos/cerbos-darwin-x64': 0.51.0
-      '@cerbos/cerbos-linux-arm64': 0.51.0
-      '@cerbos/cerbos-linux-x64': 0.51.0
+      '@cerbos/cerbos-darwin-arm64': 0.52.0
+      '@cerbos/cerbos-darwin-x64': 0.52.0
+      '@cerbos/cerbos-linux-arm64': 0.52.0
+      '@cerbos/cerbos-linux-x64': 0.52.0
 
   chalk@4.1.2:
     dependencies:
@@ -4827,7 +4827,7 @@ snapshots:
 
   uuid@11.1.0: {}
 
-  uuid@13.0.0: {}
+  uuid@14.0.0: {}
 
   vary@1.1.2: {}
 
