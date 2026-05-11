@@ -12,18 +12,18 @@
 	},
 	"author": "Cerbos Developers",
 	"license": "Apache-2.0",
-	"packageManager": "pnpm@10.33.2",
+	"packageManager": "pnpm@10.33.4",
 	"dependencies": {
 		"@apollo/server": "^5.0.0",
-		"@cerbos/core": "^0.30.0",
+		"@cerbos/core": "^0.31.0",
 		"@cerbos/grpc": "^0.27.0",
-		"cerbos": "^0.52.0",
+		"cerbos": "^0.53.0",
 		"dataloader": "^2.2.3",
 		"graphql": "^16.11.0",
 		"graphql-scalars": "^1.25.0"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.4.14",
+		"@biomejs/biome": "2.4.15",
 		"@graphql-codegen/cli": "^6.0.1",
 		"@graphql-codegen/typescript": "^5.0.2",
 		"@graphql-codegen/typescript-resolvers": "^5.1.0",
