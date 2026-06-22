@@ -25,8 +25,8 @@
 	"devDependencies": {
 		"@biomejs/biome": "2.5.0",
 		"@graphql-codegen/cli": "^6.0.1",
-		"@graphql-codegen/typescript": "^5.0.2",
-		"@graphql-codegen/typescript-resolvers": "^5.1.0",
+		"@graphql-codegen/typescript": "^6.0.0",
+		"@graphql-codegen/typescript-resolvers": "^6.0.0",
 		"@types/node": "^24.0.0",
 		"pkgroll": "^2.20.1",
 		"tsx": "^4.20.6",
