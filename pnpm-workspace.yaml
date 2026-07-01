@@ -1,0 +1,4 @@
+allowBuilds:
+  '@apollo/protobufjs': true
+  esbuild: true
+  protobufjs: true
