@@ -18,8 +18,8 @@ importers:
         specifier: ^0.29.0
         version: 0.29.1(@bufbuild/protobuf@2.15.0)(@cerbos/api@0.11.1)
       cerbos:
-        specifier: ^0.55.0
-        version: 0.55.0
+        specifier: ^0.56.0
+        version: 0.56.0
       dataloader:
         specifier: ^2.2.3
         version: 2.2.3
@@ -31,11 +31,11 @@ importers:
         version: 1.26.0(graphql@16.14.2)
     devDependencies:
       '@biomejs/biome':
-        specifier: 2.5.14
-        version: 2.5.14
+        specifier: 2.5.15
+        version: 2.5.15
       '@graphql-codegen/cli':
         specifier: ^6.0.1
-        version: 6.3.1(@types/node@24.19.0)(graphql@16.14.2)(typescript@5.9.3)
+        version: 6.3.1(@types/node@24.19.1)(graphql@16.14.2)(typescript@5.9.3)
       '@graphql-codegen/typescript':
         specifier: ^5.0.2
         version: 5.0.10(graphql@16.14.2)
@@ -44,7 +44,7 @@ importers:
         version: 5.1.8(graphql@16.14.2)
       '@types/node':
         specifier: ^24.0.0
-        version: 24.19.0
+        version: 24.19.1
       pkgroll:
         specifier: ^2.20.1
         version: 2.28.1(typescript@5.9.3)
@@ -226,59 +226,59 @@ packages:
     resolution: {integrity: sha512-LwdZHpScM4Qz8Xw2iKSzS+cfglZzJGvofQICy7W7v4caru4EaAmyUuO6BGrbyQ2mYV11W0U8j5mBhd14dd3B0A==}
     engines: {node: '>=6.9.0'}
 
-  '@biomejs/biome@2.5.14':
-    resolution: {integrity: sha512-0FabLIjd4M/dm8VFI86RMaLLdgepzbdfiAL2R8cr7V81OYYrP1w7Z73KfAwPK5h9SrEBXTzNG2y+mBwPo9xRnw==}
+  '@biomejs/biome@2.5.15':
+    resolution: {integrity: sha512-WZTW4slm/pdkh92K6t/3aEN++44JD1PQ7squ7RCMLI1flHGl43DVOIGXvCjHiZgBMO1V4uYxoFNtqrIA4qGuIQ==}
     engines: {node: '>=14.21.3'}
     hasBin: true
 
-  '@biomejs/cli-darwin-arm64@2.5.14':
-    resolution: {integrity: sha512-UnzaXO65L4tsZimFITFP2M121GyhDcWFrT3pL5ZJ5U4XcS/0L5VHYytVohdCf/gnDUFHgl2I9xnt5bV/J1kxHQ==}
+  '@biomejs/cli-darwin-arm64@2.5.15':
+    resolution: {integrity: sha512-BZVzFhJ/mUvTLMYbc9x6el0o2Uv5zP7bACYyhFb6fSc1giroXm7PL0a5KqMJ9F+/BnkYRjagD/ROSDVOZ6eapg==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [darwin]
 
-  '@biomejs/cli-darwin-x64@2.5.14':
-    resolution: {integrity: sha512-kiy8qA16K93J7uvFfWi4LgjqDpnRKyePAna6A0Y4jxyUga35SYpIZ2cNWlhy0lsfgqRenCpfymnJWEZ6mgpRgA==}
+  '@biomejs/cli-darwin-x64@2.5.15':
+    resolution: {integrity: sha512-V5Kw63V+fVGNFhFrizDxMbGXAzZCh8kYzJpy3GI6gTapWDg7bZK9oYC9CbVgQSEdTnupz0U5Efz8Ev+5vdBBXw==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [darwin]
 
-  '@biomejs/cli-linux-arm64-musl@2.5.14':
-    resolution: {integrity: sha512-SJ9PrZkBnnH9dHJDnxk34vKs0GB2dbsioaft6/hPhWJ7AHpwYH83Isnhj0FSRpFkGgpVfJ1lds23ApB2czUDLQ==}
+  '@biomejs/cli-linux-arm64-musl@2.5.15':
+    resolution: {integrity: sha512-tGzZUTcJCV7tj5Adh/Gn6nR4MycqA3iohq2LEcrarAgRBkU0h0OKd2UzCRkOsOYOuUGaUJb4YmqRqyy2feGGSw==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [linux]
     libc: [musl]
 
-  '@biomejs/cli-linux-arm64@2.5.14':
-    resolution: {integrity: sha512-vO/9BaU1n30CiFNLx49gMTMtbCAAqlo/EqFoG0BU3deQInTbJrmXSmTQ9e3FoDZIKQnvSLDVNL4lx1ci7y1T1Q==}
+  '@biomejs/cli-linux-arm64@2.5.15':
+    resolution: {integrity: sha512-XaG7P7eeSLYETD3K9grfB0mQmpLQZjygdbsxekWBJAg4am79fGAtRpfRyNnTvXB2fZFNnJZG3nXm7HBat0+VUw==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [linux]
     libc: [glibc]
 
-  '@biomejs/cli-linux-x64-musl@2.5.14':
-    resolution: {integrity: sha512-2kI5PrMgW5dcEZYrstLPmUmCwkUwZY39rP4BN93Vxbwcs2O57LDQOktUZZYPvvspN5i0mhGr3TJtF5sU26NUWg==}
+  '@biomejs/cli-linux-x64-musl@2.5.15':
+    resolution: {integrity: sha512-IlxUcyxilVGPsE008x13pWdkTbU3nQpP2i9b5UrbOYj6goBkKsRX1XB7yJLcV+O1H9LBchIIm4adOaVLZBX0ZQ==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [linux]
     libc: [musl]
 
-  '@biomejs/cli-linux-x64@2.5.14':
-    resolution: {integrity: sha512-VHZRa7CCQBUWKxNwUvHJeuW03WFRgN5NWO//SDGOitc9QIeNyfA42V9zlKm+x82xFSG9Bzi5fi+hbhm9anO8yA==}
+  '@biomejs/cli-linux-x64@2.5.15':
+    resolution: {integrity: sha512-xE4iEW/3LqlYj9GFgGrFsFSH51dEEpUbYWBfeOv0q87WkUDxK2o/HhreSb7qMJqck70RVM6Lg96hgedcAYcOkA==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [linux]
     libc: [glibc]
 
-  '@biomejs/cli-win32-arm64@2.5.14':
-    resolution: {integrity: sha512-pHgAFffmZtaYoxavEsWEYNvcA7NwOIjLyqw2HXyLbt16xYryX0L4fMV2u0G9ag6LNYPIoqWaWqzUcnc6rLGGXg==}
+  '@biomejs/cli-win32-arm64@2.5.15':
+    resolution: {integrity: sha512-2kPKzhNlm8C+Ru3GcO0Me2ODkCBLrVOUNuyi84RJyWDVKAA4+Kjj3jMjL938lF6BRfvltC4vB2nPY9SvN51Ovg==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [win32]
 
-  '@biomejs/cli-win32-x64@2.5.14':
-    resolution: {integrity: sha512-oJWmBhoHsnhUKIke+0gXDX0mltJrWHA1UyHsrTlXwX0TL64ilVZAo+TYZm97baecV0esBdpzy3k96q+09JaZUQ==}
+  '@biomejs/cli-win32-x64@2.5.15':
+    resolution: {integrity: sha512-yAzh4UqEImV6Hcy0zjUqNfJAsUhoD64FBQCdTG8Md/Z2wQeVP/ZmJ3XRYAs1g8J9fjTFyl2fCtc5FB5til47+g==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [win32]
@@ -290,23 +290,23 @@ packages:
     resolution: {integrity: sha512-ykTAo32GNbdtpS0rtI9LAPb7rtJ4zLcweiWWevxg+XsLcpBdZlU+6P2Gd5peq3HyMar39YITSp8/yG16dm+Wuw==}
     engines: {node: '>= 22'}
 
-  '@cerbos/cerbos-darwin-arm64@0.55.0':
-    resolution: {integrity: sha512-AAIYMOtM5OdUSbGgnncgdjYLt2LJUlYz58HohX4saVyouGB3fgLjp08OygwgPGAxDsp6hVyn8BAFMtvr2+3vsQ==}
+  '@cerbos/cerbos-darwin-arm64@0.56.0':
+    resolution: {integrity: sha512-5ofxUCTV2FFDa2RQk7uZbxFpFuruRr1HQaWGwzXFUOnoJPjlc1NmGJqoptO9ZACHUjOMlC1LJMqUk9rOgoYsxw==}
     cpu: [arm64]
     os: [darwin]
 
-  '@cerbos/cerbos-darwin-x64@0.55.0':
-    resolution: {integrity: sha512-3pb1aXRqwVdsg/PYnTQyBWsuTbYh6NHdwCBM94zuYqNwZ+mxLIIS3bNI0fzsB+aoHiLrZxhdmojSBEFRYpR14A==}
+  '@cerbos/cerbos-darwin-x64@0.56.0':
+    resolution: {integrity: sha512-K+TgUfME+ly+AG/XTnbQ/+CE0eyPCArHj+zzBc1OMiXBEya4+E/EHNsXO/ezdmLOWP1O86JkrQ9C1FptqvlHtQ==}
     cpu: [x64]
     os: [darwin]
 
-  '@cerbos/cerbos-linux-arm64@0.55.0':
-    resolution: {integrity: sha512-7xbowMkw0+MUGWf4NnPlIQtLM1kq6YNP0FD2mcRC2jqg/70u6d5cm5Aw0Oj8h6mw6Cr1ZFnwtksZUUSgozVjCg==}
+  '@cerbos/cerbos-linux-arm64@0.56.0':
+    resolution: {integrity: sha512-f5kf9NQQnXwS+m+Bes4L28/vLazJ0Kj5ZlqsNbfGXgRJd0/QmxtZ1XRZT93hcSbKoj4AsUG7qCP7eBIMCZmdqg==}
     cpu: [arm64]
     os: [linux]
 
-  '@cerbos/cerbos-linux-x64@0.55.0':
-    resolution: {integrity: sha512-eLZUycJfaQWK0XTRgH/Oz2E3XiNCUavDd1LhzFxhUpZ3s5CuQqmqG327ta0On8YOTxuZO/19cG4kvfC22r03/Q==}
+  '@cerbos/cerbos-linux-x64@0.56.0':
+    resolution: {integrity: sha512-EL8ORomH8eyBQHj9PFXq33jrqmBWbn7e/6OxY5T6VQ2FyRAI293NJ+wH7yQUs6/J8he+KmCDFbdw73Wgwg59Zw==}
     cpu: [x64]
     os: [linux]
 
@@ -1160,8 +1160,8 @@ packages:
   '@types/long@4.0.2':
     resolution: {integrity: sha512-MqTGEo5bj5t157U6fA/BiDynNkn0YknVdh48CMPkTSpFTVmvao5UQmm7uEF6xBEo7qIMAlY/JSleYaE6VOdpaA==}
 
-  '@types/node@24.19.0':
-    resolution: {integrity: sha512-zY+5tKxXdhGh1PYI0ac+7juvEu4OI6vWtVVoj5i2m42jxAY1U+zHGt6QCyOFwykdP62sM3MJ9stoYYUw5aCWew==}
+  '@types/node@24.19.1':
+    resolution: {integrity: sha512-aS3/DG0oM05K0RIXXP+hKjinGG5IgSSVGzswZxW3O0sS3pH4/fycXundUC9XsszgKCk4gHXylTEK6hyFxVxnoQ==}
 
   '@types/resolve@1.20.2':
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
@@ -1282,8 +1282,8 @@ packages:
   capital-case@1.0.4:
     resolution: {integrity: sha512-ds37W8CytHgwnhGGTi88pcPyR15qoNkOpYwmMMfnWqqWgESapLqvDx6huFjQ5vqWSn2Z06173XNA7LtMOeUh1A==}
 
-  cerbos@0.55.0:
-    resolution: {integrity: sha512-7jJqaUZqo4F63+yG5t3KY6/XaonXES5BPKG3RgkF4wIEZhcnYHx+xEmVpKPJvt3xiBaOmnhXQXWHbY7tmbj+vQ==}
+  cerbos@0.56.0:
+    resolution: {integrity: sha512-O8U+lolO0R+IseTwzLHcKkV6xq+Pf66idim/wFz27QEqJnWriXZZiIPpbCyTQJDU7U6uPE+VdW6uZFm9bGjJGA==}
     hasBin: true
 
   chalk@4.1.2:
@@ -2542,39 +2542,39 @@ snapshots:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.28.5
 
-  '@biomejs/biome@2.5.14':
+  '@biomejs/biome@2.5.15':
     optionalDependencies:
-      '@biomejs/cli-darwin-arm64': 2.5.14
-      '@biomejs/cli-darwin-x64': 2.5.14
-      '@biomejs/cli-linux-arm64': 2.5.14
-      '@biomejs/cli-linux-arm64-musl': 2.5.14
-      '@biomejs/cli-linux-x64': 2.5.14
-      '@biomejs/cli-linux-x64-musl': 2.5.14
-      '@biomejs/cli-win32-arm64': 2.5.14
-      '@biomejs/cli-win32-x64': 2.5.14
+      '@biomejs/cli-darwin-arm64': 2.5.15
+      '@biomejs/cli-darwin-x64': 2.5.15
+      '@biomejs/cli-linux-arm64': 2.5.15
+      '@biomejs/cli-linux-arm64-musl': 2.5.15
+      '@biomejs/cli-linux-x64': 2.5.15
+      '@biomejs/cli-linux-x64-musl': 2.5.15
+      '@biomejs/cli-win32-arm64': 2.5.15
+      '@biomejs/cli-win32-x64': 2.5.15
 
-  '@biomejs/cli-darwin-arm64@2.5.14':
+  '@biomejs/cli-darwin-arm64@2.5.15':
     optional: true
 
-  '@biomejs/cli-darwin-x64@2.5.14':
+  '@biomejs/cli-darwin-x64@2.5.15':
     optional: true
 
-  '@biomejs/cli-linux-arm64-musl@2.5.14':
+  '@biomejs/cli-linux-arm64-musl@2.5.15':
     optional: true
 
-  '@biomejs/cli-linux-arm64@2.5.14':
+  '@biomejs/cli-linux-arm64@2.5.15':
     optional: true
 
-  '@biomejs/cli-linux-x64-musl@2.5.14':
+  '@biomejs/cli-linux-x64-musl@2.5.15':
     optional: true
 
-  '@biomejs/cli-linux-x64@2.5.14':
+  '@biomejs/cli-linux-x64@2.5.15':
     optional: true
 
-  '@biomejs/cli-win32-arm64@2.5.14':
+  '@biomejs/cli-win32-arm64@2.5.15':
     optional: true
 
-  '@biomejs/cli-win32-x64@2.5.14':
+  '@biomejs/cli-win32-x64@2.5.15':
     optional: true
 
   '@bufbuild/protobuf@2.15.0': {}
@@ -2583,16 +2583,16 @@ snapshots:
     dependencies:
       '@bufbuild/protobuf': 2.15.0
 
-  '@cerbos/cerbos-darwin-arm64@0.55.0':
+  '@cerbos/cerbos-darwin-arm64@0.56.0':
     optional: true
 
-  '@cerbos/cerbos-darwin-x64@0.55.0':
+  '@cerbos/cerbos-darwin-x64@0.56.0':
     optional: true
 
-  '@cerbos/cerbos-linux-arm64@0.55.0':
+  '@cerbos/cerbos-linux-arm64@0.56.0':
     optional: true
 
-  '@cerbos/cerbos-linux-x64@0.55.0':
+  '@cerbos/cerbos-linux-x64@0.56.0':
     optional: true
 
   '@cerbos/core@0.33.1(@bufbuild/protobuf@2.15.0)':
@@ -2711,7 +2711,7 @@ snapshots:
       graphql: 16.14.2
       tslib: 2.8.1
 
-  '@graphql-codegen/cli@6.3.1(@types/node@24.19.0)(graphql@16.14.2)(typescript@5.9.3)':
+  '@graphql-codegen/cli@6.3.1(@types/node@24.19.1)(graphql@16.14.2)(typescript@5.9.3)':
     dependencies:
       '@babel/generator': 7.29.1
       '@babel/template': 7.28.6
@@ -2722,21 +2722,21 @@ snapshots:
       '@graphql-tools/apollo-engine-loader': 8.0.30(graphql@16.14.2)
       '@graphql-tools/code-file-loader': 8.1.32(graphql@16.14.2)
       '@graphql-tools/git-loader': 8.0.36(graphql@16.14.2)
-      '@graphql-tools/github-loader': 9.1.2(@types/node@24.19.0)(graphql@16.14.2)
+      '@graphql-tools/github-loader': 9.1.2(@types/node@24.19.1)(graphql@16.14.2)
       '@graphql-tools/graphql-file-loader': 8.1.14(graphql@16.14.2)
       '@graphql-tools/json-file-loader': 8.0.28(graphql@16.14.2)
       '@graphql-tools/load': 8.1.10(graphql@16.14.2)
       '@graphql-tools/merge': 9.1.9(graphql@16.14.2)
-      '@graphql-tools/url-loader': 9.1.2(@types/node@24.19.0)(graphql@16.14.2)
+      '@graphql-tools/url-loader': 9.1.2(@types/node@24.19.1)(graphql@16.14.2)
       '@graphql-tools/utils': 11.1.0(graphql@16.14.2)
-      '@inquirer/prompts': 7.10.1(@types/node@24.19.0)
+      '@inquirer/prompts': 7.10.1(@types/node@24.19.1)
       '@whatwg-node/fetch': 0.10.13
       chalk: 4.1.2
       cosmiconfig: 9.0.1(typescript@5.9.3)
       debounce: 2.2.0
       detect-indent: 6.1.0
       graphql: 16.14.2
-      graphql-config: 5.1.6(@types/node@24.19.0)(graphql@16.14.2)(typescript@5.9.3)
+      graphql-config: 5.1.6(@types/node@24.19.1)(graphql@16.14.2)(typescript@5.9.3)
       is-glob: 4.0.3
       jiti: 2.6.1
       json-to-pretty-yaml: 1.2.2
@@ -2930,7 +2930,7 @@ snapshots:
       - crossws
       - utf-8-validate
 
-  '@graphql-tools/executor-http@3.2.1(@types/node@24.19.0)(graphql@16.14.2)':
+  '@graphql-tools/executor-http@3.2.1(@types/node@24.19.1)(graphql@16.14.2)':
     dependencies:
       '@graphql-hive/signal': 2.0.0
       '@graphql-tools/executor-common': 1.0.6(graphql@16.14.2)
@@ -2940,7 +2940,7 @@ snapshots:
       '@whatwg-node/fetch': 0.10.13
       '@whatwg-node/promise-helpers': 1.3.2
       graphql: 16.14.2
-      meros: 1.3.2(@types/node@24.19.0)
+      meros: 1.3.2(@types/node@24.19.1)
       tslib: 2.8.1
     transitivePeerDependencies:
       - '@types/node'
@@ -2979,9 +2979,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@graphql-tools/github-loader@9.1.2(@types/node@24.19.0)(graphql@16.14.2)':
+  '@graphql-tools/github-loader@9.1.2(@types/node@24.19.1)(graphql@16.14.2)':
     dependencies:
-      '@graphql-tools/executor-http': 3.2.1(@types/node@24.19.0)(graphql@16.14.2)
+      '@graphql-tools/executor-http': 3.2.1(@types/node@24.19.1)(graphql@16.14.2)
       '@graphql-tools/graphql-tag-pluck': 8.3.31(graphql@16.14.2)
       '@graphql-tools/utils': 11.1.0(graphql@16.14.2)
       '@whatwg-node/fetch': 0.10.13
@@ -3063,10 +3063,10 @@ snapshots:
       graphql: 16.14.2
       tslib: 2.8.1
 
-  '@graphql-tools/url-loader@9.1.2(@types/node@24.19.0)(graphql@16.14.2)':
+  '@graphql-tools/url-loader@9.1.2(@types/node@24.19.1)(graphql@16.14.2)':
     dependencies:
       '@graphql-tools/executor-graphql-ws': 3.1.5(graphql@16.14.2)
-      '@graphql-tools/executor-http': 3.2.1(@types/node@24.19.0)(graphql@16.14.2)
+      '@graphql-tools/executor-http': 3.2.1(@types/node@24.19.1)(graphql@16.14.2)
       '@graphql-tools/executor-legacy-ws': 1.1.28(graphql@16.14.2)
       '@graphql-tools/utils': 11.1.0(graphql@16.14.2)
       '@graphql-tools/wrap': 11.1.14(graphql@16.14.2)
@@ -3120,128 +3120,128 @@ snapshots:
 
   '@inquirer/ansi@1.0.2': {}
 
-  '@inquirer/checkbox@4.3.2(@types/node@24.19.0)':
+  '@inquirer/checkbox@4.3.2(@types/node@24.19.1)':
     dependencies:
       '@inquirer/ansi': 1.0.2
-      '@inquirer/core': 10.3.2(@types/node@24.19.0)
+      '@inquirer/core': 10.3.2(@types/node@24.19.1)
       '@inquirer/figures': 1.0.15
-      '@inquirer/type': 3.0.10(@types/node@24.19.0)
+      '@inquirer/type': 3.0.10(@types/node@24.19.1)
       yoctocolors-cjs: 2.1.3
     optionalDependencies:
-      '@types/node': 24.19.0
+      '@types/node': 24.19.1
 
-  '@inquirer/confirm@5.1.21(@types/node@24.19.0)':
+  '@inquirer/confirm@5.1.21(@types/node@24.19.1)':
     dependencies:
-      '@inquirer/core': 10.3.2(@types/node@24.19.0)
-      '@inquirer/type': 3.0.10(@types/node@24.19.0)
+      '@inquirer/core': 10.3.2(@types/node@24.19.1)
+      '@inquirer/type': 3.0.10(@types/node@24.19.1)
     optionalDependencies:
-      '@types/node': 24.19.0
+      '@types/node': 24.19.1
 
-  '@inquirer/core@10.3.2(@types/node@24.19.0)':
+  '@inquirer/core@10.3.2(@types/node@24.19.1)':
     dependencies:
       '@inquirer/ansi': 1.0.2
       '@inquirer/figures': 1.0.15
-      '@inquirer/type': 3.0.10(@types/node@24.19.0)
+      '@inquirer/type': 3.0.10(@types/node@24.19.1)
       cli-width: 4.1.0
       mute-stream: 2.0.0
       signal-exit: 4.1.0
       wrap-ansi: 6.2.0
       yoctocolors-cjs: 2.1.3
     optionalDependencies:
-      '@types/node': 24.19.0
+      '@types/node': 24.19.1
 
-  '@inquirer/editor@4.2.23(@types/node@24.19.0)':
+  '@inquirer/editor@4.2.23(@types/node@24.19.1)':
     dependencies:
-      '@inquirer/core': 10.3.2(@types/node@24.19.0)
-      '@inquirer/external-editor': 1.0.3(@types/node@24.19.0)
-      '@inquirer/type': 3.0.10(@types/node@24.19.0)
+      '@inquirer/core': 10.3.2(@types/node@24.19.1)
+      '@inquirer/external-editor': 1.0.3(@types/node@24.19.1)
+      '@inquirer/type': 3.0.10(@types/node@24.19.1)
     optionalDependencies:
-      '@types/node': 24.19.0
+      '@types/node': 24.19.1
 
-  '@inquirer/expand@4.0.23(@types/node@24.19.0)':
+  '@inquirer/expand@4.0.23(@types/node@24.19.1)':
     dependencies:
-      '@inquirer/core': 10.3.2(@types/node@24.19.0)
-      '@inquirer/type': 3.0.10(@types/node@24.19.0)
+      '@inquirer/core': 10.3.2(@types/node@24.19.1)
+      '@inquirer/type': 3.0.10(@types/node@24.19.1)
       yoctocolors-cjs: 2.1.3
     optionalDependencies:
-      '@types/node': 24.19.0
+      '@types/node': 24.19.1
 
-  '@inquirer/external-editor@1.0.3(@types/node@24.19.0)':
+  '@inquirer/external-editor@1.0.3(@types/node@24.19.1)':
     dependencies:
       chardet: 2.1.1
       iconv-lite: 0.7.2
     optionalDependencies:
-      '@types/node': 24.19.0
+      '@types/node': 24.19.1
 
   '@inquirer/figures@1.0.15': {}
 
-  '@inquirer/input@4.3.1(@types/node@24.19.0)':
+  '@inquirer/input@4.3.1(@types/node@24.19.1)':
     dependencies:
-      '@inquirer/core': 10.3.2(@types/node@24.19.0)
-      '@inquirer/type': 3.0.10(@types/node@24.19.0)
+      '@inquirer/core': 10.3.2(@types/node@24.19.1)
+      '@inquirer/type': 3.0.10(@types/node@24.19.1)
     optionalDependencies:
-      '@types/node': 24.19.0
+      '@types/node': 24.19.1
 
-  '@inquirer/number@3.0.23(@types/node@24.19.0)':
+  '@inquirer/number@3.0.23(@types/node@24.19.1)':
     dependencies:
-      '@inquirer/core': 10.3.2(@types/node@24.19.0)
-      '@inquirer/type': 3.0.10(@types/node@24.19.0)
+      '@inquirer/core': 10.3.2(@types/node@24.19.1)
+      '@inquirer/type': 3.0.10(@types/node@24.19.1)
     optionalDependencies:
-      '@types/node': 24.19.0
+      '@types/node': 24.19.1
 
-  '@inquirer/password@4.0.23(@types/node@24.19.0)':
-    dependencies:
-      '@inquirer/ansi': 1.0.2
-      '@inquirer/core': 10.3.2(@types/node@24.19.0)
-      '@inquirer/type': 3.0.10(@types/node@24.19.0)
-    optionalDependencies:
-      '@types/node': 24.19.0
-
-  '@inquirer/prompts@7.10.1(@types/node@24.19.0)':
-    dependencies:
-      '@inquirer/checkbox': 4.3.2(@types/node@24.19.0)
-      '@inquirer/confirm': 5.1.21(@types/node@24.19.0)
-      '@inquirer/editor': 4.2.23(@types/node@24.19.0)
-      '@inquirer/expand': 4.0.23(@types/node@24.19.0)
-      '@inquirer/input': 4.3.1(@types/node@24.19.0)
-      '@inquirer/number': 3.0.23(@types/node@24.19.0)
-      '@inquirer/password': 4.0.23(@types/node@24.19.0)
-      '@inquirer/rawlist': 4.1.11(@types/node@24.19.0)
-      '@inquirer/search': 3.2.2(@types/node@24.19.0)
-      '@inquirer/select': 4.4.2(@types/node@24.19.0)
-    optionalDependencies:
-      '@types/node': 24.19.0
-
-  '@inquirer/rawlist@4.1.11(@types/node@24.19.0)':
-    dependencies:
-      '@inquirer/core': 10.3.2(@types/node@24.19.0)
-      '@inquirer/type': 3.0.10(@types/node@24.19.0)
-      yoctocolors-cjs: 2.1.3
-    optionalDependencies:
-      '@types/node': 24.19.0
-
-  '@inquirer/search@3.2.2(@types/node@24.19.0)':
-    dependencies:
-      '@inquirer/core': 10.3.2(@types/node@24.19.0)
-      '@inquirer/figures': 1.0.15
-      '@inquirer/type': 3.0.10(@types/node@24.19.0)
-      yoctocolors-cjs: 2.1.3
-    optionalDependencies:
-      '@types/node': 24.19.0
-
-  '@inquirer/select@4.4.2(@types/node@24.19.0)':
+  '@inquirer/password@4.0.23(@types/node@24.19.1)':
     dependencies:
       '@inquirer/ansi': 1.0.2
-      '@inquirer/core': 10.3.2(@types/node@24.19.0)
-      '@inquirer/figures': 1.0.15
-      '@inquirer/type': 3.0.10(@types/node@24.19.0)
+      '@inquirer/core': 10.3.2(@types/node@24.19.1)
+      '@inquirer/type': 3.0.10(@types/node@24.19.1)
+    optionalDependencies:
+      '@types/node': 24.19.1
+
+  '@inquirer/prompts@7.10.1(@types/node@24.19.1)':
+    dependencies:
+      '@inquirer/checkbox': 4.3.2(@types/node@24.19.1)
+      '@inquirer/confirm': 5.1.21(@types/node@24.19.1)
+      '@inquirer/editor': 4.2.23(@types/node@24.19.1)
+      '@inquirer/expand': 4.0.23(@types/node@24.19.1)
+      '@inquirer/input': 4.3.1(@types/node@24.19.1)
+      '@inquirer/number': 3.0.23(@types/node@24.19.1)
+      '@inquirer/password': 4.0.23(@types/node@24.19.1)
+      '@inquirer/rawlist': 4.1.11(@types/node@24.19.1)
+      '@inquirer/search': 3.2.2(@types/node@24.19.1)
+      '@inquirer/select': 4.4.2(@types/node@24.19.1)
+    optionalDependencies:
+      '@types/node': 24.19.1
+
+  '@inquirer/rawlist@4.1.11(@types/node@24.19.1)':
+    dependencies:
+      '@inquirer/core': 10.3.2(@types/node@24.19.1)
+      '@inquirer/type': 3.0.10(@types/node@24.19.1)
       yoctocolors-cjs: 2.1.3
     optionalDependencies:
-      '@types/node': 24.19.0
+      '@types/node': 24.19.1
 
-  '@inquirer/type@3.0.10(@types/node@24.19.0)':
+  '@inquirer/search@3.2.2(@types/node@24.19.1)':
+    dependencies:
+      '@inquirer/core': 10.3.2(@types/node@24.19.1)
+      '@inquirer/figures': 1.0.15
+      '@inquirer/type': 3.0.10(@types/node@24.19.1)
+      yoctocolors-cjs: 2.1.3
     optionalDependencies:
-      '@types/node': 24.19.0
+      '@types/node': 24.19.1
+
+  '@inquirer/select@4.4.2(@types/node@24.19.1)':
+    dependencies:
+      '@inquirer/ansi': 1.0.2
+      '@inquirer/core': 10.3.2(@types/node@24.19.1)
+      '@inquirer/figures': 1.0.15
+      '@inquirer/type': 3.0.10(@types/node@24.19.1)
+      yoctocolors-cjs: 2.1.3
+    optionalDependencies:
+      '@types/node': 24.19.1
+
+  '@inquirer/type@3.0.10(@types/node@24.19.1)':
+    optionalDependencies:
+      '@types/node': 24.19.1
 
   '@jridgewell/gen-mapping@0.3.13':
     dependencies:
@@ -3443,7 +3443,7 @@ snapshots:
 
   '@types/long@4.0.2': {}
 
-  '@types/node@24.19.0':
+  '@types/node@24.19.1':
     dependencies:
       undici-types: 7.24.6
 
@@ -3451,7 +3451,7 @@ snapshots:
 
   '@types/ws@8.18.1':
     dependencies:
-      '@types/node': 24.19.0
+      '@types/node': 24.19.1
 
   '@whatwg-node/disposablestack@0.0.6':
     dependencies:
@@ -3572,12 +3572,12 @@ snapshots:
       tslib: 2.8.1
       upper-case-first: 2.0.2
 
-  cerbos@0.55.0:
+  cerbos@0.56.0:
     optionalDependencies:
-      '@cerbos/cerbos-darwin-arm64': 0.55.0
-      '@cerbos/cerbos-darwin-x64': 0.55.0
-      '@cerbos/cerbos-linux-arm64': 0.55.0
-      '@cerbos/cerbos-linux-x64': 0.55.0
+      '@cerbos/cerbos-darwin-arm64': 0.56.0
+      '@cerbos/cerbos-darwin-x64': 0.56.0
+      '@cerbos/cerbos-linux-arm64': 0.56.0
+      '@cerbos/cerbos-linux-x64': 0.56.0
 
   chalk@4.1.2:
     dependencies:
@@ -3874,13 +3874,13 @@ snapshots:
 
   gopd@1.2.0: {}
 
-  graphql-config@5.1.6(@types/node@24.19.0)(graphql@16.14.2)(typescript@5.9.3):
+  graphql-config@5.1.6(@types/node@24.19.1)(graphql@16.14.2)(typescript@5.9.3):
     dependencies:
       '@graphql-tools/graphql-file-loader': 8.1.14(graphql@16.14.2)
       '@graphql-tools/json-file-loader': 8.0.28(graphql@16.14.2)
       '@graphql-tools/load': 8.1.10(graphql@16.14.2)
       '@graphql-tools/merge': 9.1.9(graphql@16.14.2)
-      '@graphql-tools/url-loader': 9.1.2(@types/node@24.19.0)(graphql@16.14.2)
+      '@graphql-tools/url-loader': 9.1.2(@types/node@24.19.1)(graphql@16.14.2)
       '@graphql-tools/utils': 11.1.0(graphql@16.14.2)
       cosmiconfig: 8.3.6(typescript@5.9.3)
       graphql: 16.14.2
@@ -4118,9 +4118,9 @@ snapshots:
 
   merge2@1.4.1: {}
 
-  meros@1.3.2(@types/node@24.19.0):
+  meros@1.3.2(@types/node@24.19.1):
     optionalDependencies:
-      '@types/node': 24.19.0
+      '@types/node': 24.19.1
 
   micromatch@4.0.8:
     dependencies:
@@ -4263,7 +4263,7 @@ snapshots:
       '@protobufjs/path': 1.1.2
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.2
-      '@types/node': 24.19.0
+      '@types/node': 24.19.1
       long: 5.3.2
 
   qs@6.15.1:
